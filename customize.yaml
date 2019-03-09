@@ -1,0 +1,64 @@
+# AUTOMATION ###################################################################
+
+automation.coming_home:
+  icon: mdi:home
+
+automation.portable_switch_timer:
+  icon: mdi:timer
+
+automation.hass_auto_backup:
+  hidden: true
+
+automation.hass_auto_restart:
+  hidden: true
+
+# GROUP ########################################################################
+
+group.all_automations:
+  friendly_name: All Automations
+
+group.all_devices:
+  friendly_name: All Devices
+
+group.all_scripts:
+  friendly_name: All Scripts
+
+group.all_switches:
+  friendly_name: All Switches
+
+group.all_lights:
+  friendly_name: All Lights
+
+# SENSOR #######################################################################
+
+sensor.memory_use_percent:
+  friendly_name: Memory
+
+sensor.yr_symbol:
+  friendly_name: Weather
+
+sensor.memory_free:
+  unit_of_measurement: MB
+
+sensor.disk_free_home:
+  friendly_name: Disk free
+  unit_of_measurement: GB
+
+sensor.disk_use_percent_home:
+  friendly_name: Disk use
+
+sensor.ipv4_address_eth0:
+  friendly_name: IP address
+
+sensor.processor_use:
+  friendly_name: CPU
+
+# DEVICE #######################################################################
+
+device_tracker.xlns_pc:
+  icon: mdi:monitor
+
+# LIGHT #######################################################################
+
+light.yeelight_rgb_7c49eb158f0a:
+  friendly_name: Main Light

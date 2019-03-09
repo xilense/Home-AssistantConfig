@@ -1,0 +1,33 @@
+- platform: plex
+  host: 192.168.1.2
+  name: Plex
+  token: !secret plex_token
+
+- platform: time_date
+  display_options:
+    - 'date'
+    - 'time'
+
+- platform: uptime
+
+- platform: version
+
+- platform: systemmonitor
+  resources:
+    - type: processor_use
+    - type: disk_free
+      arg: /home
+    - type: disk_use_percent
+      arg: /home
+    - type: memory_free
+    - type: memory_use_percent
+    - type: ipv4_address
+      arg: eth0
+    - type: last_boot
+
+- platform: steam_online
+  api_key: !secret steam_api_key
+  accounts:
+    - !secret steam_accounts
+
+

@@ -1,0 +1,19 @@
+- name: "Modem"
+  url: http://192.168.8.1/
+  icon: mdi:access-point
+
+- name: "Router"
+  url: http://192.168.1.1/
+  icon: mdi:router-wireless
+
+- name: "State UI"
+  url: http://192.168.1.3:8123/states
+  icon: mdi:format-list-bulleted
+  
+- name: "Volumio"
+  url: http://192.168.1.5/
+  icon: mdi:play-circle
+
+- name: "Plex"
+  url: http://192.168.1.2:32400
+  icon: mdi:library-video

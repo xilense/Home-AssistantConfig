@@ -1,0 +1,30 @@
+- platform: wake_on_lan
+  mac_address: !secret xlns_pc_mac
+  name: Switch XLNS-PC
+  host: !secret xlns_pc_ip
+  broadcast_address: 192.168.1.255
+  turn_off:
+      service: hassio.addon_stdin
+      data:
+          addon: core_rpc_shutdown
+          input: XLNS-PC
+
+- platform: mqtt
+  name: "Switch_04"
+  state_topic: "stat/switch_04/POWER"
+  command_topic: "cmnd/switch_04/POWER"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 1
+  retain: true
+
+- platform: mqtt
+  name: "Switch Portable"
+  state_topic: "stat/switch_s26_01/POWER"
+  command_topic: "cmnd/switch_s26_01/POWER"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false
+  qos: 1
+  retain: true

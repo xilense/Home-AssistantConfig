@@ -1,0 +1,24 @@
+- platform: mpchc
+  name: "MPC"
+  host: !secret xlns_pc_ip
+
+- platform: kodi
+  name: "Kodi"
+  host: !secret xlns_pc_ip
+  turn_off_action:
+    service: media_player.kodi_call_method
+    data:
+      entity_id: media_player.kodi
+      method: Application.Quit
+
+- platform: plex
+  scan_interval: 5
+  show_all_controls: false
+  use_episode_art: true
+  remove_unavailable_clients: true
+  client_remove_interval: 300
+
+- platform: volumio
+  name: "Volumio"
+  host: !secret volumio_ip
+  port: 3000

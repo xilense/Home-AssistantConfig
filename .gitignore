@@ -1,0 +1,30 @@
+# whitelist files/folders with !, these will not be ignored.
+!*.yaml
+!.gitignore
+!*.md
+
+# Ignore folders.
+.storage
+.cloud
+.google.token
+tts
+download
+deps
+
+# these YAML files are ignored
+.uuid
+.google_maps_location_sharing.cookies
+.google_maps_location_sharing.cookies.lelono1130_gmail_com
+ip_bans.yaml
+secrets.yaml
+known_devices.yaml
+zone.yaml
+plex.conf
+home-assistant.log
+home-assistant_v2.db
+telegram_chat_id.yaml
+google_travel_time.yaml
+
+*.conf
+*.key
+*.crt

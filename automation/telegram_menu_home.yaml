@@ -1,0 +1,39 @@
+- alias: "Telegram Home Menu"
+  trigger:
+  - platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/start'
+  action:
+  - service: telegram_bot.send_message
+    data_template:
+      message: '⚙️ *List of Command*'
+      target: '{{ trigger.event.data.user_id }}'
+      disable_notification: true
+      inline_keyboard:
+        - '⚡ Switch:/switch, ▶️ Media:/media, ❤️ Family:/family'
+        - '✳️ Service:/service, ⚙️ System:/system, Close:/remove_button'
+
+################################################################################
+
+- alias: "Telegram Home Menu Callback"
+  trigger:
+  - platform: event
+    event_type: telegram_callback
+    event_data:
+      data: '/start'
+  action:
+  - service: telegram_bot.delete_message
+    data_template:
+      message_id: '{{ trigger.event.data.message.message_id }}'
+      chat_id: '{{ trigger.event.data.user_id }}'
+  - service: telegram_bot.send_message
+    data_template:
+      message: '⚙️ *List of Command*'
+      target: '{{ trigger.event.data.user_id }}'
+      disable_notification: true
+      inline_keyboard:
+        - '⚡ Switch:/switch, ▶️ Media:/media, ❤️ Family:/family'
+        - '✳️ Service:/service, ⚙️ System:/system, Close:/remove_button'
+
+################################################################################

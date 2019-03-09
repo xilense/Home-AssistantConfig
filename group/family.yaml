@@ -1,0 +1,4 @@
+family:
+  name: Family
+  entities:
+    - device_tracker.google_maps_101676721020210595319

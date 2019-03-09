@@ -1,0 +1,202 @@
+homeassistant:
+  name: "Home"
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  elevation: !secret home_elevation
+  unit_system: metric
+  time_zone: Asia/Jakarta
+  customize: !include customize.yaml
+  customize_domain:
+    automation:
+      initial_state: 'on'
+  customize_glob:
+    "automation.telegram_*":
+      icon: mdi:telegram
+      hidden: true
+    "automation.notif_*":
+      icon: mdi:bell
+      hidden: true
+
+panel_iframe:
+  configurator:
+    title: "Configurator"
+    icon: mdi:wrench
+    url: http://192.168.1.3:3218
+  tasmoadmin:
+    title: "TasmoAdmin"
+    icon: mdi:lightbulb-on
+    url: http://192.168.1.3:9541
+  ide:
+    title: IDE
+    icon: mdi:code-braces
+    url: http://192.168.1.3:8321
+#  pihole:
+#    title: "Pi-hole"
+#    icon: mdi:block-helper
+#    url: http://192.168.1.3:4865
+
+mqtt:
+  broker: core-mosquitto
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+
+ifttt:
+  key: !secret ifttt_key
+
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_bot_api_key
+    allowed_chat_ids:
+      !include telegram_chat_id.yaml
+
+notify:
+  - name: Pushbullet
+    platform: pushbullet
+    api_key: !secret pushbullet_api_key
+  - name: Telegram
+    platform: telegram
+    chat_id: !secret telegram_chat_id
+
+input_datetime:
+#  both_date_and_time:
+#    name: Input with both date and time
+#    has_date: true
+#    has_time: true
+#  only_date:
+#    name: Input with only date
+#    has_date: true
+#    has_time: false
+  portable_switch_timer:
+    name: "Portable Switch timer"
+    has_date: false
+    has_time: true
+
+discovery:
+  ignore:
+    - yeelight
+
+xiaomi_aqara:
+  discovery_retry: 10
+  gateways:
+    - key: !secret aqara_key
+      mac: !secret aqara_mac
+      host: 192.168.1.24
+
+light:
+  - platform: yeelight
+    devices:
+      192.168.1.22:
+        name: Main Light
+        model: color1
+    custom_effects:
+      - name: 'Fire Flicker'
+        flow_params:
+          count: 0
+          transitions:
+            - TemperatureTransition: [1900, 1000, 80]
+            - TemperatureTransition: [1900, 2000, 60]
+            - SleepTransition:       [1000]
+
+media_player: !include media_player.yaml
+
+#camera:
+#  - platform: generic
+#    name: Volumio Album Art
+#    still_image_url: http://192.168.1.3:8123{{ states.media_player.volumio.attributes.entity_picture }}
+
+device_tracker:
+  - platform: bluetooth_tracker
+    new_device_defaults:
+      track_new_devices: false
+      hide_if_away: False
+  - platform: google_maps
+    max_gps_accuracy: 100
+    username: !secret google_maps_username
+    password: !secret google_maps_password
+
+downloader:
+  download_dir: download
+
+frontend:
+
+config:
+
+#http:
+#  base_url: !secret http_base_url
+#  server_port: !secret http_port
+#  ssl_certificate: !secret ssl_certificate
+#  ssl_key: !secret ssl_key
+#  trusted_networks:
+#    - 192.168.1.0/24
+#    - !secret z4_ip
+#  ip_ban_enabled: true
+#  login_attempts_threshold: 3
+
+updater:
+
+conversation:
+
+history:
+  exclude:
+    entities:
+      - sensor.plex
+      - sensor.disk_free_home
+      - sensor.disk_use_percent_home
+      - sensor.memory_use_percent
+      - sensor.memory_free
+      - sensor.joko_to_home
+
+recorder:
+  purge_interval: 1
+  purge_keep_days: 7
+  exclude:
+    domains:
+      - automation
+      - weblink
+      - updater
+      - persistent_notification
+    entities:
+      - sensor.uptime
+      - sensor.last_boot
+      - sensor.current_version
+      - sensor.ipv4_address_eth0
+      - sensor.time
+      - sensor.processor_use
+      - script.restart_hass
+
+logbook:
+  exclude:
+    entities:
+      - sensor.last_boot
+      - sensor.date
+      - sensor.time
+      - sensor.uptime
+
+logger:
+  default: info
+  logs:
+    homeassistant.components.media_player.mpchc: fatal
+
+map:
+
+tts:
+  - platform: google
+
+sun:
+
+system_health:
+
+wake_on_lan:
+
+cloud:
+
+#weblink:
+#  entities: !include weblink.yaml
+
+zone: !include zone.yaml
+binary_sensor: !include sensorRF.yaml
+sensor: !include_dir_merge_list sensor
+switch: !include switch.yaml
+group: !include_dir_merge_list group
+automation: !include_dir_merge_list automation
+script: !include_dir_merge_named script
