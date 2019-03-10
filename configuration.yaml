@@ -197,6 +197,7 @@ zone: !include zone.yaml
 binary_sensor: !include sensorRF.yaml
 sensor: !include_dir_merge_list sensor
 switch: !include switch.yaml
-group: !include_dir_merge_list group
+group: !include_dir_merge_named group
 automation: !include_dir_merge_list automation
 script: !include_dir_merge_named script
+person: !include person.yaml

@@ -62,3 +62,5 @@ device_tracker.xlns_pc:
 
 light.yeelight_rgb_7c49eb158f0a:
   friendly_name: Main Light
+
+# ##############################################################################

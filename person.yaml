@@ -1,0 +1,6 @@
+- name: Joko
+  id: joko
+  user_id: fc70c4f6b90d4e6da5354f7ad14e9a86
+  device_trackers:
+    - device_tracker.google_maps_101676721020210595319
+    - device_tracker.xperia_z3

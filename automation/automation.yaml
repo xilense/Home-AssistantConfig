@@ -32,26 +32,38 @@
 
 - alias: "Portable Switch timer"
   trigger:
-    - platform: template
-      value_template: '{{ states.sensor.time.state  == (states.input_datetime.portable_switch_timer.attributes.timestamp | int | timestamp_custom("%H:%M", False))  }}'
+  - platform: template
+    value_template: '{{ states.sensor.time.state  == (states.input_datetime.portable_switch_timer.attributes.timestamp | int | timestamp_custom("%H:%M", False))  }}'
   action:
-    - service: homeassistant.turn_off
-      entity_id: switch.switch_portable
+  - service: homeassistant.turn_off
+    entity_id: switch.switch_portable
 
 # PRESENCE #####################################################################
 
 - alias: "Coming Home"
   trigger:
-    - platform: state
-      entity_id: device_tracker.xperia_z3
-      to: 'home'
+  - platform: state
+    entity_id: device_tracker.xperia_z3
+    to: 'home'
   condition:
-    - condition: state
-      entity_id: switch.switch_portable
-      state: 'off'
+  - condition: state
+    entity_id: switch.switch_portable
+    state: 'off'
   action:
-    - service: homeassistant.turn_on
-      entity_id: switch.switch_portable
+  - service: homeassistant.turn_on
+    entity_id: switch.switch_portable
 
 ################################################################################
 
+- id: sunrise
+  alias: "Sunrise"
+  trigger:
+  - platform: time
+    at: '06:30:00'
+  condition:
+  - condition: state
+    entity_id: group.family
+    state: 'home'
+  action:
+
+################################################################################
