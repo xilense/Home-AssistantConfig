@@ -201,3 +201,4 @@ group: !include_dir_merge_named group
 automation: !include_dir_merge_list automation
 script: !include_dir_merge_named script
 person: !include person.yaml
+scene: !include_dir_merge_list scene
