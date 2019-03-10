@@ -71,6 +71,16 @@ input_datetime:
     has_date: false
     has_time: true
 
+input_select:
+  current_light_theme:
+    name: Current Light Theme
+    options:
+      - Relax
+      - Reading
+      - Concentrate
+      - Energise
+    initial: Relax
+
 discovery:
   ignore:
     - yeelight
