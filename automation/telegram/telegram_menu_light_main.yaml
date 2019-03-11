@@ -1,0 +1,52 @@
+- alias: "Telegram Light Main"
+  trigger:
+  - platform: event
+    event_type: telegram_callback
+    event_data:
+      data: '/light_main'
+  action:
+  - service: telegram_bot.delete_message
+    data_template:
+      message_id: '{{ trigger.event.data.message.message_id }}'
+      chat_id: '{{ trigger.event.data.user_id }}'
+  - service: telegram_bot.send_message
+    data_template:
+      message: "*Main Light* currently {{ states('light.main_light') }}
+
+
+*Main Light Command*"
+      target: '{{ trigger.event.data.user_id }}'
+      disable_notification: true
+      inline_keyboard:
+        - 'Toggle:/light_main_toggle'
+        - 'Home Menu:/start, ↩️ Back:/light'
+
+################################################################################
+
+- alias: "Telegram Light Main Toggle"
+  trigger:
+  - platform: event
+    event_type: telegram_callback
+    event_data:
+      data: '/light_main_toggle'
+  action:
+  - service: homeassistant.toggle
+    entity_id: light.main_light
+  - service: telegram_bot.delete_message
+    data_template:
+      message_id: '{{ trigger.event.data.message.message_id }}'
+      chat_id: '{{ trigger.event.data.user_id }}'
+  - service: telegram_bot.send_message
+    data_template:
+      message: "*Main Light* currently {{ states('light.main_light') }}
+
+
+*Main Light Command*"
+      target: '{{ trigger.event.data.user_id }}'
+      disable_notification: true
+      inline_keyboard:
+        - 'Toggle:/light_main_toggle'
+        - 'Home Menu:/start, ↩️ Back:/light'
+
+################################################################################
+
