@@ -1,0 +1,6 @@
+- name: Movies
+  entities:
+    light.main_light:
+      state: true
+      brightness: 41
+      color_temp: 362
