@@ -11,6 +11,21 @@ automation.hass_auto_backup:
 
 automation.hass_auto_restart:
   hidden: true
+  
+automation.away_mode:
+  icon: mdi:account-arrow-right
+
+automation.good_morning_routine:
+  icon: mdi:weather-sunny
+
+automation.good_night_trigger:
+  icon: mdi:weather-night
+
+automation.hass_auto_backup:
+  icon: mdi:home-assistant
+  
+automation.hass_auto_restart:
+  icon: mdi:home-assistant
 
 # GROUP ########################################################################
 
@@ -52,11 +67,6 @@ sensor.ipv4_address_eth0:
 
 sensor.processor_use:
   friendly_name: CPU
-
-# DEVICE #######################################################################
-
-device_tracker.xlns_pc:
-  icon: mdi:monitor
 
 # LIGHT #######################################################################
 

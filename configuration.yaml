@@ -70,6 +70,10 @@ input_datetime:
     name: "Portable Switch timer"
     has_date: false
     has_time: true
+  good_morning_time:
+    name: "Good Morning Routine Time"
+    has_date: false
+    has_time: true
 
 input_select:
   current_light_theme:
@@ -213,3 +217,4 @@ automation: !include_dir_merge_list automation
 script: !include_dir_merge_named script
 person: !include person.yaml
 scene: !include_dir_merge_list scene
+input_boolean: !include_dir_merge_named input_boolean

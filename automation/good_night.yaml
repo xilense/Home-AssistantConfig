@@ -1,0 +1,23 @@
+- alias: 'Good Night Trigger'
+  trigger:
+  - platform: state
+    entity_id: input_boolean.good_night
+    to: 'on'
+    from: 'off'
+
+  condition:
+  - condition: state
+    entity_id: sun.sun
+    state: 'below_horizon'
+
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.main_light
+      brightness: 3
+      color_temp: 588
+      transition: 30
+  - service: switch.turn_on
+    entity_id: switch.switch_portable
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.good_night

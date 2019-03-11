@@ -54,16 +54,3 @@
     entity_id: switch.switch_portable
 
 ################################################################################
-
-- id: sunrise
-  alias: "Sunrise"
-  trigger:
-  - platform: time
-    at: '06:30:00'
-  condition:
-  - condition: state
-    entity_id: group.family
-    state: 'home'
-  action:
-
-################################################################################
