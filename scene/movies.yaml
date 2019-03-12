@@ -4,3 +4,4 @@
       state: true
       brightness: 41
       color_temp: 362
+      transition: 15
