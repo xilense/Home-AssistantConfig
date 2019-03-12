@@ -1,4 +1,4 @@
-- alias: "Telegram Home Menu"
+- alias: "Telegram Home"
   trigger:
   - platform: event
     event_type: telegram_command
@@ -16,7 +16,7 @@
 
 ################################################################################
 
-- alias: "Telegram Home Menu Callback"
+- alias: "Telegram Home Callback"
   trigger:
   - platform: event
     event_type: telegram_callback
