@@ -5,6 +5,14 @@ homeassistant:
   elevation: !secret home_elevation
   unit_system: metric
   time_zone: Asia/Jakarta
+  auth_providers:
+  - type: legacy_api_password
+  - type: trusted_networks
+    trusted_networks:
+      - 127.0.0.1
+      - ::1
+      #- 192.168.1.0/24
+      - !secret z4_ip
   customize: !include customize.yaml
   customize_domain:
     automation:
@@ -141,9 +149,6 @@ http:
 #  server_port: !secret http_port
 #  ssl_certificate: !secret ssl_certificate
 #  ssl_key: !secret ssl_key
-  trusted_networks:
-    - 192.168.1.0/24
-    - !secret z4_ip
   ip_ban_enabled: true
   login_attempts_threshold: 3
 
