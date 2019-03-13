@@ -7,7 +7,7 @@
   action:
   - service: persistent_notification.create
     data:
-      message: "{{'\U0001F3E0'}}{{'\U00002728'}} An update for Home Assistant is available."
+      message: "An update for Home Assistant is available."
   - service: notify.telegram
     data:
       message: "{{'\U0001F3E0'}}{{'\U00002728'}} An update for Home Assistant is available."
@@ -32,7 +32,7 @@
   action:
   - service: persistent_notification.create
     data_template:
-      message: "{{'\U0001F4E5'}}{{'\U0000274C'}} Download failed"
+      message: "Download failed"
   - service: notify.telegram
     data:
       message: "{{'\U0001F4E5'}}{{'\U0000274C'}} Download failed"
@@ -49,7 +49,7 @@
   action:
   - service: persistent_notification.create
     data_template:
-      message: "{{'\U0001F4BF'}}{{'\U000026A0'}} Disk Almost Full"
+      message: "Disk Almost Full"
   - service: notify.telegram
     data:
       message: "{{'\U0001F4BF'}}{{'\U000026A0'}} Disk Almost Full"
