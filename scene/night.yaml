@@ -1,0 +1,7 @@
+- name: Night
+  entities:
+    light.main_light:
+      state: true
+      brightness: 255
+      color_temp: 215
+      transition: 15

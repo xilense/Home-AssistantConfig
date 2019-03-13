@@ -1,0 +1,7 @@
+- name: Day
+  entities:
+    light.main_light:
+      state: true
+      brightness: 255
+      color_temp: 153
+      transition: 15

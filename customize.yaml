@@ -23,6 +23,9 @@ automation.good_morning_routine:
 automation.good_night_trigger:
   icon: mdi:weather-night
 
+automation.gaming_mode:
+  icon: mdi:steam
+
 # GROUP ########################################################################
 
 group.all_automations:

@@ -8,6 +8,11 @@ alert_mode:
   icon: mdi:alert-octagram
   initial: off
 
+away_mode:
+  name: Away Mode
+  icon: mdi:account-arrow-right
+  initial: off
+
 speech_notifications:
   name: Speech Notifications
   icon: mdi:speaker-wireless

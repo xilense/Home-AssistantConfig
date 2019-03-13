@@ -1,0 +1,14 @@
+- alias: "Hass - Auto Restart"
+  trigger:
+  - platform: time
+    at: '01:30:00'
+
+  condition:
+  - condition: time
+    weekday:
+      - mon
+      - wed
+      - sat
+
+  action:
+  - service: homeassistant.restart

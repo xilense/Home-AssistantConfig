@@ -6,6 +6,7 @@
     from: 'off'
   - platform: template
     value_template: '{{ states.sensor.time.state  == (states.input_datetime.good_morning_time.attributes.timestamp | int | timestamp_custom("%H:%M", False))  }}'
+
   condition:
   - condition: state
     entity_id: group.family
@@ -20,13 +21,13 @@
       - sat
 
   action:
-  - service: light.turn_on
+  - service: input_select.select_option
     data:
-      entity_id: light.main_light
-      brightness: 255
-      color_temp: 153
-      transition: 30
-  - service: homeassistant.turn_off
+      entity_id: input_select.current_light_theme
+      option: "Day"
+  - service: switch.turn_off
     entity_id: switch.switch_portable
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.alert_mode
   - service: input_boolean.turn_off
     entity_id: input_boolean.good_morning

@@ -1,0 +1,7 @@
+- name: Sleep
+  entities:
+    light.main_light:
+      state: true
+      brightness: 3
+      color_temp: 588
+      transition: 15

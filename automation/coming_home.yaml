@@ -1,0 +1,19 @@
+- alias: "Coming Home"
+  trigger:
+  - platform: state
+    entity_id: group.family
+    to: 'home'
+    for: '00:00:11'
+
+  condition:
+  - condition: state
+    entity_id: switch.switch_portable
+    state: 'off'
+
+  action:
+  - service: switch.turn_on
+    entity_id: switch.switch_portable
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.away_mode
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.alert_mode

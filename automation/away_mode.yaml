@@ -3,21 +3,24 @@
   - platform: state
     entity_id: group.family
     to: 'not_home'
-    for: '00:11:00'
+    for: '00:05:00'
   - platform: state
     entity_id: input_boolean.good_night
     to: 'on'
 
   condition:
   - condition: state
-    entity_id: group.family
-    state: 'not_home'
-  - condition: state
     entity_id: input_boolean.guest_mode
     state: 'off'
 
   action:
-  - service: light.turn_off
-    entity_id: light.main_light
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.good_night
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.current_light_theme
+      option: "Away"
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.text_notifications
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.away_mode
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.alert_mode
