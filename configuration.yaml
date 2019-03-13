@@ -188,6 +188,9 @@ logbook:
       - sensor.date
       - sensor.time
       - sensor.uptime
+      - device_tracker.google_maps_101676721020210595319
+      - device_tracker.xperia_z3
+      - device_tracker.xlns_pc
 
 logger:
   default: info
