@@ -11,17 +11,17 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '⚡ *Portable Switch* currently {{ states("switch.switch_portable") }}'
+      message: "{{'\U000026A1'}} *Portable Switch* currently {{ states('switch.switch_portable') }}"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
   - service: telegram_bot.send_message
     data_template:
-      message: '⚡ *Portable Switch* command'
+      message: "{{'\U000026A1'}} *Portable Switch* command"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⚡ Toggle:/switch_portable_toggle'
-        - 'Home Menu:/start, ↩️ Back:/switch'
+        - "{{'\U000026A1'}} Toggle:/switch_portable_toggle"
+        - "{{'\U0001F3E0'}} Home Menu:/start, {{'\U000021A9'}} Back:/switch"
 
 ################################################################################
 
@@ -40,11 +40,11 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '⚡ OK, Switching *Portable Switch*'
+      message: "{{'\U000026A1'}} OK, Switching *Portable Switch*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⚡ Toggle:/switch_portable_toggle'
-        - 'Home Menu:/start, ↩️ Back:/switch'
+        - "{{'\U000026A1'}} Toggle:/switch_portable_toggle"
+        - "{{'\U0001F3E0'}} Home Menu:/start, {{'\U000021A9'}} Back:/switch"
 
 ################################################################################

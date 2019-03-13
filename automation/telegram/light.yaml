@@ -11,11 +11,11 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '*List of Light*'
+      message: "{{'\U0001F4A1'}} *List of Light*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - 'Main Light:/light_main'
-        - 'Home Menu:/start'
+        - "Main Light:/light_main"
+        - "{{'\U0001F3E0'}} Home Menu:/start"
 
 ################################################################################

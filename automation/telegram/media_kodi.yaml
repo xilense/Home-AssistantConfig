@@ -12,12 +12,12 @@
   - service: telegram_bot.send_photo
     data_template:
       url: http://192.168.1.3:8123{{ states.media_player.kodi.attributes.entity_picture }}
-      caption: '▶️ *Kodi* {{ states.media_player.kodi.state }} *{{ states.media_player.kodi.attributes.media_artist }}* - *{{ states.media_player.kodi.attributes.media_title }}*'
+      caption: "{{'\U000025B6'}} *Kodi* {{ states.media_player.kodi.state }} *{{ states.media_player.kodi.attributes.media_artist }}* - *{{ states.media_player.kodi.attributes.media_title }}*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⏮️ Prev:/kodi_prev, ⏯️ Play/Pause:/kodi_playpause, ⏭️ Next:/kodi_next'
-        - 'Reload:/kodi, Home Menu:/start, ↩️ Back:/media'
+        - "{{'\U000023EE'}} Prev:/kodi_prev, {{'\U000023EF'}} Play/Pause:/kodi_playpause, {{'\U000023ED'}} Next:/kodi_next"
+        - "{{'\U0001F504'}} Reload:/kodi, {{'\U0001F3E0'}} Home Menu:/start, {{'\U000021A9'}} Back:/media"
 
 ################################################################################
 
@@ -38,12 +38,12 @@
   - service: telegram_bot.send_photo
     data_template:
       url: http://192.168.1.3:8123{{ states.media_player.kodi.attributes.entity_picture }}
-      caption: '▶️ *Kodi* {{ states.media_player.kodi.state }} *{{ states.media_player.kodi.attributes.media_artist }}* - *{{ states.media_player.kodi.attributes.media_title }}*'
+      caption: "{{'\U000025B6'}} *Kodi* {{ states.media_player.kodi.state }} *{{ states.media_player.kodi.attributes.media_artist }}* - *{{ states.media_player.kodi.attributes.media_title }}*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⏮️ Prev:/kodi_prev, ⏯️ Play/Pause:/kodi_playpause, ⏭️ Next:/kodi_next'
-        - 'Reload:/kodi, Home Menu:/start, ↩️ Back:/media'
+        - "{{'\U000023EE'}} Prev:/kodi_prev, {{'\U000023EF'}} Play/Pause:/kodi_playpause, {{'\U000023ED'}} Next:/kodi_next"
+        - "{{'\U0001F504'}} Reload:/kodi, {{'\U0001F3E0'}} Home Menu:/start, {{'\U000021A9'}} Back:/media"
 
 ################################################################################
 
@@ -64,12 +64,12 @@
   - service: telegram_bot.send_photo
     data_template:
       url: http://192.168.1.3:8123{{ states.media_player.kodi.attributes.entity_picture }}
-      caption: '▶️ *Kodi* {{ states.media_player.kodi.state }} *{{ states.media_player.kodi.attributes.media_artist }}* - *{{ states.media_player.kodi.attributes.media_title }}*'
+      caption: "{{'\U000025B6'}} *Kodi* {{ states.media_player.kodi.state }} *{{ states.media_player.kodi.attributes.media_artist }}* - *{{ states.media_player.kodi.attributes.media_title }}*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⏮️ Prev:/kodi_prev, ⏯️ Play/Pause:/kodi_playpause, ⏭️ Next:/kodi_next'
-        - 'Reload:/kodi, Home Menu:/start, ↩️ Back:/media'
+        - "{{'\U000023EE'}} Prev:/kodi_prev, {{'\U000023EF'}} Play/Pause:/kodi_playpause, {{'\U000023ED'}} Next:/kodi_next"
+        - "{{'\U0001F504'}} Reload:/kodi, {{'\U0001F3E0'}} Home Menu:/start, {{'\U000021A9'}} Back:/media"
 
 ################################################################################
 
@@ -90,11 +90,11 @@
   - service: telegram_bot.send_photo
     data_template:
       url: http://192.168.1.3:8123{{ states.media_player.kodi.attributes.entity_picture }}
-      caption: '▶️ *Kodi* {{ states.media_player.kodi.state }} *{{ states.media_player.kodi.attributes.media_artist }}* - *{{ states.media_player.kodi.attributes.media_title }}*'
+      caption: "{{'\U000025B6'}} *Kodi* {{ states.media_player.kodi.state }} *{{ states.media_player.kodi.attributes.media_artist }}* - *{{ states.media_player.kodi.attributes.media_title }}*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⏮️ Prev:/kodi_prev, ⏯️ Play/Pause:/kodi_playpause, ⏭️ Next:/kodi_next'
-        - 'Reload:/kodi, Home Menu:/start, ↩️ Back:/media'
+        - "{{'\U000023EE'}} Prev:/kodi_prev, {{'\U000023EF'}} Play/Pause:/kodi_playpause, {{'\U000023ED'}} Next:/kodi_next"
+        - "{{'\U0001F504'}} Reload:/kodi, {{'\U0001F3E0'}} Home Menu:/start, {{'\U000021A9'}} Back:/media"
 
 ################################################################################

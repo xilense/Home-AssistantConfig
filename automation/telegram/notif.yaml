@@ -7,10 +7,10 @@
   action:
   - service: persistent_notification.create
     data:
-      message: "An update for Home Assistant is available."
+      message: "{{'\U0001F514'}}{{'\U0001F3E0'}} An update for Home Assistant is available."
   - service: notify.telegram
     data:
-      message: 'ℹ️ An update for *Home Assistant* is available'
+      message: "{{'\U0001F514'}}{{'\U0001F3E0'}} An update for Home Assistant is available."
 
 ################################################################################
 
@@ -21,7 +21,7 @@
   action:
   - service: notify.telegram
     data:
-      message: '⚡ *Home Assistant* just started'
+      message: "{{'\U0001F514'}}{{'\U000026A1'}} *Home Assistant* just started"
 
 ################################################################################
 
@@ -32,10 +32,10 @@
   action:
   - service: persistent_notification.create
     data_template:
-      message: '❌️ Download failed'
+      message: "{{'\U0001F4E5'}}{{'\U0000274C'}} Download failed"
   - service: notify.telegram
     data:
-      message: 'Download failed'
+      message: "{{'\U0001F4E5'}}{{'\U0000274C'}} Download failed"
 
 ################################################################################
 
@@ -49,10 +49,10 @@
   action:
   - service: persistent_notification.create
     data_template:
-      message: '⚠️️ Disk Almost Full'
+      message: "{{'\U0001F4BF'}}{{'\U000026A0'}} Disk Almost Full"
   - service: notify.telegram
     data:
-      message: 'Disk Almost Full'
+      message: "{{'\U0001F4BF'}}{{'\U000026A0'}} Disk Almost Full"
 
 # TELEGRAM DEVICE NOTIF ########################################################
 
@@ -65,7 +65,7 @@
   action:
   - service: notify.telegram
     data:
-      message: '⚡ *XLNS-PC* turned on'
+      message: "{{'\U0001F5A5'}}{{'\U000026A1'}} *XLNS-PC* turned on"
 
 ################################################################################
 
@@ -78,6 +78,6 @@
   action:
   - service: notify.telegram
     data:
-      message: 'ℹ️ *XLNS-PC* turned off'
+      message: "{{'\U0001F5A5'}}{{'\U000026A1'}} *XLNS-PC* turned off"
 
 ################################################################################

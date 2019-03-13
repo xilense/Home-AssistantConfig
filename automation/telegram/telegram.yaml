@@ -24,7 +24,7 @@
   action:
   - service: telegram_bot.send_message
     data_template:
-      title: 'ℹ️ *Dumb automation*'
+      title: "{{'\U0001F514'}}️ *Dumb automation*"
       message: 'You said: {{ trigger.event.data.text }}'
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
@@ -33,10 +33,10 @@
         - "Remove this button:/remove_button"
   - service: notify.pushbullet
     data_template:
-      message: 'You said: {{ trigger.event.data.text }}'
+      message: "{{'\U0001F514'}} You said: {{ trigger.event.data.text }}"
   - service: persistent_notification.create
     data_template:
-      message: 'You said: {{ trigger.event.data.text }}'
+      message: "{{'\U0001F514'}} You said: {{ trigger.event.data.text }}"
 
 ################################################################################
 
@@ -50,6 +50,6 @@
   - service: telegram_bot.answer_callback_query
     data_template:
       callback_query_id: '{{ trigger.event.data.id }}'
-      message: 'OK, as you said!'
+      message: "OK, as you said!"
 
 ################################################################################

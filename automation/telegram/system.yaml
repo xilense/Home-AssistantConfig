@@ -11,12 +11,12 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '*⚙️ System Command*'
+      message: "{{'\U00002699'}} *System Command*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⚙️ System Status:/system_status, ⚡ Restart:/restart'
-        - 'Home Menu:/start'
+        - "{{'\U00002699'}} System Status:/system_status, {{'\U000026A1'}} Restart:/restart"
+        - "{{'\U0001F3E0'}} Home Menu:/start"
 
 ################################################################################
 
@@ -29,9 +29,9 @@
   action:
   - service: telegram_bot.send_message
     data_template:
-      message: '⚙️ *HASS* uptime {{ states("sensor.uptime") }} day
+      message: "{{'\U00002699'}} *HASS* uptime {{ states('sensor.uptime') }} day
       
-      Disk {{ states("sensor.disk_use_percent_home") }} % used'
+      Disk {{ states('sensor.disk_use_percent_home') }} % used"
       target: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.delete_message
     data_template:
@@ -39,12 +39,12 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '*⚙️ System Command*'
+      message: "{{'\U00002699'}} *System Command*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⚙️ System Status:/system_status, ⚡ Restart:/restart, Backup Config:/snapshot'
-        - 'Home Menu:/start'
+        - "{{'\U00002699'}} System Status:/system_status, {{'\U000026A1'}} Restart:/restart, Backup Config:/snapshot"
+        - "{{'\U0001F3E0'}} Home Menu:/start"
 
 ################################################################################
 
@@ -62,16 +62,16 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '⚡ OK, restarting *Home Assistant*'
+      message: "{{'\U000026A1'}} OK, restarting *Home Assistant*"
       target: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '*⚙️ System Command*'
+      message: "{{'\U00002699'}} *System Command*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⚙️ System Status:/system_status, ⚡ Restart:/restart'
-        - 'Home Menu:/start'
+        - "{{'\U00002699'}} System Status:/system_status, {{'\U000026A1'}} Restart:/restart"
+        - "{{'\U0001F3E0'}} Home Menu:/start"
 
 ################################################################################
 

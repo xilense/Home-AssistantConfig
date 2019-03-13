@@ -11,17 +11,17 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '⚡ *XLNS-PC* currently {{ states("switch.switch_xlns_pc") }}'
+      message: "{{'\U000026A1'}}*XLNS-PC* currently {{ states('switch.switch_xlns_pc') }}"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
   - service: telegram_bot.send_message
     data_template:
-      message: '⚡ *XLNS-PC* command'
+      message: "{{'\U000026A1'}}*XLNS-PC* command"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⚡ Toogle:/xlns_pc_toggle'
-        - 'Home Menu:/start, ↩️ Back:/switch'
+        - "{{'\U000026A1'}} Toggle:/xlns_pc_toggle"
+        - "{{'\U0001F3E0'}} Home Menu:/start, {{'\U000021A9'}} Back:/switch"
 
 ################################################################################
 
@@ -40,11 +40,11 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '⚡ OK, Switching *XLNS-PC*'
+      message: "{{'\U000026A1'}}OK, Switching *XLNS-PC*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⚡ Toggle:/xlns_pc_toggle'
-        - 'Home Menu:/start, ↩️ Back:/switch'
+        - "{{'\U000026A1'}} Toggle:/xlns_pc_toggle"
+        - "{{'\U0001F3E0'}} Home Menu:/start, {{'\U000021A9'}} Back:/switch"
 
 ################################################################################

@@ -11,12 +11,12 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '*✳️ List of Service*'
+      message: "{{'\U0001F4E5'}}* List of Service*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⬇️ Downloader:/downloader, SERVICE_02:/service_02'
-        - 'Home Menu:/start'
+        - "{{'\U0001F4E5'}} Downloader:/downloader, SERVICE_02:/service_02"
+        - "{{'\U0001F3E0'}} Home Menu:/start"
 
 ################################################################################
 
@@ -33,10 +33,10 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '⬇️ Please enter the URL'
+      message: "{{'\U0001F310'}} Please enter the URL"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - 'Home Menu:/start'
+        - "{{'\U0001F3E0'}} Home Menu:/start"
 
 ################################################################################

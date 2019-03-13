@@ -11,12 +11,12 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '▶️ *MPC* {{ states.media_player.mpc.state }} *{{ states.media_player.mpc.attributes.media_artist }}* - *{{ states.media_player.mpc.attributes.media_title }}*'
+      message: "{{'\U000025B6'}} *MPC* {{ states.media_player.mpc.state }} *{{ states.media_player.mpc.attributes.media_artist }}* - *{{ states.media_player.mpc.attributes.media_title }}*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⏮️ Prev:/mpc_prev, ⏯️ Play/Pause:/mpc_playpause, ⏭️ Next:/mpc_next'
-        - 'Reload:/mpc, Home Menu:/start, ↩️ Back:/media'
+        - "{{'\U000023EE'}} Prev:/mpc_prev, {{'\U000023EF'}} Play/Pause:/mpc_playpause, {{'\U000023ED'}} Next:/mpc_next"
+        - "{{'\U0001F504'}} Reload:/mpc, {{'\U0001F3E0'}} Home Menu:/start, {{'\U000021A9'}} Back:/media"
 
 ################################################################################
 
@@ -36,12 +36,12 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '▶️ *MPC* {{ states.media_player.mpc.state }} *{{ states.media_player.mpc.attributes.media_artist }}* - *{{ states.media_player.mpc.attributes.media_title }}*'
+      message: "{{'\U000025B6'}} *MPC* {{ states.media_player.mpc.state }} *{{ states.media_player.mpc.attributes.media_artist }}* - *{{ states.media_player.mpc.attributes.media_title }}*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⏮️ Prev:/mpc_prev, ⏯️ Play/Pause:/mpc_playpause, ⏭️ Next:/mpc_next'
-        - 'Reload:/mpc, Home Menu:/start, ↩️ Back:/media'
+        - "{{'\U000023EE'}} Prev:/mpc_prev, {{'\U000023EF'}} Play/Pause:/mpc_playpause, {{'\U000023ED'}} Next:/mpc_next"
+        - "{{'\U0001F504'}} Reload:/mpc, {{'\U0001F3E0'}} Home Menu:/start, {{'\U000021A9'}} Back:/media"
 
 ################################################################################
 
@@ -61,12 +61,12 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '▶️ *MPC* {{ states.media_player.mpc.state }} *{{ states.media_player.mpc.attributes.media_artist }}* - *{{ states.media_player.mpc.attributes.media_title }}*'
+      message: "{{'\U000025B6'}} *MPC* {{ states.media_player.mpc.state }} *{{ states.media_player.mpc.attributes.media_artist }}* - *{{ states.media_player.mpc.attributes.media_title }}*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⏮️ Prev:/mpc_prev, ⏯️ Play/Pause:/mpc_playpause, ⏭️ Next:/mpc_next'
-        - 'Reload:/mpc, Home Menu:/start, ↩️ Back:/media'
+        - "{{'\U000023EE'}} Prev:/mpc_prev, {{'\U000023EF'}} Play/Pause:/mpc_playpause, {{'\U000023ED'}} Next:/mpc_next"
+        - "{{'\U0001F504'}} Reload:/mpc, {{'\U0001F3E0'}} Home Menu:/start, {{'\U000021A9'}} Back:/media"
 
 ################################################################################
 
@@ -86,11 +86,11 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '▶️ *MPC* {{ states.media_player.mpc.state }} *{{ states.media_player.mpc.attributes.media_artist }}* - *{{ states.media_player.mpc.attributes.media_title }}*'
+      message: "{{'\U000025B6'}} *MPC* {{ states.media_player.mpc.state }} *{{ states.media_player.mpc.attributes.media_artist }}* - *{{ states.media_player.mpc.attributes.media_title }}*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⏮️ Prev:/mpc_prev, ⏯️ Play/Pause:/mpc_playpause, ⏭️ Next:/mpc_next'
-        - 'Reload:/mpc, Home Menu:/start, ↩️ Back:/media'
+        - "{{'\U000023EE'}} Prev:/mpc_prev, {{'\U000023EF'}} Play/Pause:/mpc_playpause, {{'\U000023ED'}} Next:/mpc_next"
+        - "{{'\U0001F504'}} Reload:/mpc, {{'\U0001F3E0'}} Home Menu:/start, {{'\U000021A9'}} Back:/media"
 
 ################################################################################

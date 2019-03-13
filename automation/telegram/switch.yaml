@@ -11,11 +11,11 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '⚡ *List of Switch*'
+      message: "{{'\U000026A1'}} *List of Switch*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - 'XLNS-PC:/xlns_pc, Portable Switch:/switch_portable, Switch_04:/switch_04'
-        - 'Home Menu:/start'
+        - "{{'\U0001F5A5'}} XLNS-PC:/xlns_pc, {{'\U000026A1'}} Portable Switch:/switch_portable, {{'\U000026A1'}} Switch_04:/switch_04"
+        - "{{'\U0001F3E0'}} Home Menu:/start"
 
 ################################################################################

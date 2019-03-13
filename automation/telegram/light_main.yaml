@@ -11,15 +11,15 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: "*Main Light* currently {{ states('light.main_light') }}
+      message: "{{'\U0001F4A1'}} *Main Light* currently {{ states('light.main_light') }}
 
 
-*Main Light Command*"
+{{'\U00002699'}} *Main Light Command*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - 'Toggle:/light_main_toggle'
-        - 'Home Menu:/start, ↩️ Back:/light'
+        - "{{'\U000026A1'}} Toggle:/light_main_toggle"
+        - "{{'\U0001F3E0'}} Home Menu:/start, {{'\U000021A9'}} Back:/light"
 
 ################################################################################
 
@@ -38,15 +38,15 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: "*Main Light* currently {{ states('light.main_light') }}
+      message: "{{'\U0001F4A1'}} *Main Light* currently {{ states('light.main_light') }}
 
 
-*Main Light Command*"
+{{'\U00002699'}} *Main Light Command*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - 'Toggle:/light_main_toggle'
-        - 'Home Menu:/start, ↩️ Back:/light'
+        - "{{'\U000026A1'}} Toggle:/light_main_toggle"
+        - "{{'\U0001F3E0'}} Home Menu:/start, {{'\U000021A9'}} Back:/light"
 
 ################################################################################
 

@@ -11,17 +11,17 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '⚡ *Switch-04* currently {{ states("switch.switch_04") }}'
+      message: "{{'\U000026A1'}} *Switch-04* currently {{ states('switch.switch_04') }}"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
   - service: telegram_bot.send_message
     data_template:
-      message: '⚡ *Switch-04* command'
+      message: "{{'\U000026A1'}} *Switch-04* command"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⚡ Toggle:/switch_04_toggle'
-        - 'Home Menu:/start, ↩️ Back:/switch'
+        - "{{'\U000026A1'}} Toggle:/switch_04_toggle"
+        - "{{'\U0001F3E0'}} Home Menu:/start, {{'\U000021A9'}} Back:/switch"
 
 ################################################################################
 
@@ -40,11 +40,11 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '⚡ OK, Switching *Switch-04*'
+      message: "{{'\U000026A1'}} OK, Switching *Switch-04*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⚡ Toggle:/switch_04_toggle'
-        - 'Home Menu:/start, ↩️ Back:/switch'
+        - "{{'\U000026A1'}} Toggle:/switch_04_toggle"
+        - "{{'\U0001F3E0'}} Home Menu:/start, {{'\U000021A9'}} Back:/switch"
 
 ################################################################################

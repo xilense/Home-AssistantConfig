@@ -7,12 +7,12 @@
   action:
   - service: telegram_bot.send_message
     data_template:
-      message: '⚙️ *List of Command*'
+      message: "{{'\U0001F3E0'}} *List of Command*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⚡ Switch:/switch, Light:/light, ▶️ Media:/media, ❤️ Family:/family'
-        - '✳️ Service:/service, ⚙️ System:/system, Close:/remove_button'
+        - "{{'\U000026A1'}} Switch:/switch, {{'\U0001F4A1'}}Light:/light, {{'\U000025B6'}} Media:/media, {{'\U0001F464'}} Family:/family"
+        - "{{'\U0001F4E5'}} Service:/service, {{'\U00002699'}} System:/system, {{'\U0000274E'}} Close:/remove_button"
 
 ################################################################################
 
@@ -29,11 +29,11 @@
       chat_id: '{{ trigger.event.data.user_id }}'
   - service: telegram_bot.send_message
     data_template:
-      message: '⚙️ *List of Command*'
+      message: "{{'\U0001F3E0'}} *List of Command*"
       target: '{{ trigger.event.data.user_id }}'
       disable_notification: true
       inline_keyboard:
-        - '⚡ Switch:/switch, Light:/light, ▶️ Media:/media, ❤️ Family:/family'
-        - '✳️ Service:/service, ⚙️ System:/system, Close:/remove_button'
+        - "{{'\U000026A1'}} Switch:/switch, {{'\U0001F4A1'}}Light:/light, {{'\U000025B6'}} Media:/media, {{'\U0001F464'}} Family:/family"
+        - "{{'\U0001F4E5'}} Service:/service, {{'\U00002699'}} System:/system, {{'\U0000274E'}} Close:/remove_button"
 
 ################################################################################
