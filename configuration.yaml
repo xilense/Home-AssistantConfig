@@ -83,16 +83,6 @@ input_datetime:
     has_date: false
     has_time: true
 
-input_select:
-  current_light_theme:
-    name: Current Light Theme
-    options:
-      - Relax
-      - Reading
-      - Concentrate
-      - Energise
-    initial: Relax
-
 discovery:
   ignore:
     - yeelight
@@ -230,3 +220,4 @@ script: !include_dir_merge_named script
 person: !include person.yaml
 scene: !include_dir_merge_list scene
 input_boolean: !include_dir_merge_named input_boolean
+input_select: !include_dir_merge_named input_select

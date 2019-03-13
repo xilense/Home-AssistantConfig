@@ -1,0 +1,8 @@
+current_light_theme:
+  name: Current Light Theme
+  options:
+    - Relax
+    - Reading
+    - Concentrate
+    - Energise
+  initial: Relax
