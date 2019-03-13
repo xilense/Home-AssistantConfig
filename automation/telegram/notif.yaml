@@ -7,10 +7,10 @@
   action:
   - service: persistent_notification.create
     data:
-      message: "{{'\U0001F514'}}{{'\U0001F3E0'}} An update for Home Assistant is available."
+      message: "{{'\U0001F3E0'}}{{'\U00002728'}} An update for Home Assistant is available."
   - service: notify.telegram
     data:
-      message: "{{'\U0001F514'}}{{'\U0001F3E0'}} An update for Home Assistant is available."
+      message: "{{'\U0001F3E0'}}{{'\U00002728'}} An update for Home Assistant is available."
 
 ################################################################################
 
@@ -21,7 +21,7 @@
   action:
   - service: notify.telegram
     data:
-      message: "{{'\U0001F514'}}{{'\U000026A1'}} *Home Assistant* just started"
+      message: "{{'\U0001F3E0'}}{{'\U000026A1'}} *Home Assistant* just started"
 
 ################################################################################
 
