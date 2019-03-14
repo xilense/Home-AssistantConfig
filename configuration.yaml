@@ -66,6 +66,7 @@ input_datetime:
 discovery:
   ignore:
     - yeelight
+    - igd
 
 xiaomi_aqara:
   discovery_retry: 10
