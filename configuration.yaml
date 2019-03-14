@@ -30,10 +30,6 @@ panel_iframe:
     title: IDE
     icon: mdi:code-braces
     url: http://192.168.1.3:8321
-#  pihole:
-#    title: "Pi-hole"
-#    icon: mdi:block-helper
-#    url: http://192.168.1.3:4865
 
 mqtt:
   broker: core-mosquitto
@@ -58,14 +54,6 @@ notify:
     chat_id: !secret telegram_chat_id
 
 input_datetime:
-#  both_date_and_time:
-#    name: Input with both date and time
-#    has_date: true
-#    has_time: true
-#  only_date:
-#    name: Input with only date
-#    has_date: true
-#    has_time: false
   portable_switch_timer:
     name: "Portable Switch timer"
     has_date: false
@@ -202,9 +190,6 @@ system_health:
 wake_on_lan:
 
 cloud:
-
-#weblink:
-#  entities: !include weblink.yaml
 
 zone: !include zone.yaml
 binary_sensor: !include sensorRF.yaml
