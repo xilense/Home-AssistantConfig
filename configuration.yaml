@@ -16,6 +16,9 @@ homeassistant:
     "automation.notif_*":
       icon: mdi:bell
       hidden: true
+    "automation.hass_*":
+      icon: mdi:home-assistant
+      hidden: true
 
 panel_iframe:
   configurator:

@@ -6,14 +6,6 @@ automation.coming_home:
 automation.portable_switch_timer:
   icon: mdi:timer
 
-automation.hass_auto_backup:
-  hidden: true
-  icon: mdi:home-assistant
-
-automation.hass_auto_restart:
-  hidden: true
-  icon: mdi:home-assistant
-
 automation.away_mode:
   icon: mdi:account-arrow-right
 

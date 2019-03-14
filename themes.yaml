@@ -35,7 +35,7 @@ clear:
   secondary-background-color: 'var(--background-color-2)'                         # Background more info title
 
   # Icons
-  paper-item-icon-color: 'var(--text-light-color)'                                # Off
+  paper-item-icon-color: 'var(--text-medium-color)'                                # Off
   paper-item-icon-active-color: 'var(--accent-color)'                             # On
   
   # Switches
