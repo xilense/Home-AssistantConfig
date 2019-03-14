@@ -130,6 +130,7 @@ downloader:
   download_dir: download
 
 frontend:
+  themes: !include themes.yaml
 
 config:
 
