@@ -1,4 +1,4 @@
-- alias: "Portable Switch timer"
+- alias: "Portable Switch Timer"
   trigger:
   - platform: template
     value_template: '{{ states.sensor.time.state  == (states.input_datetime.portable_switch_timer.attributes.timestamp | int | timestamp_custom("%H:%M", False))  }}'

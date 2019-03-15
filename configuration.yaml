@@ -57,8 +57,8 @@ notify:
     chat_id: !secret telegram_chat_id
 
 input_datetime:
-  portable_switch_timer:
-    name: "Portable Switch timer"
+  portable_switch_time:
+    name: "Portable Switch Time"
     has_date: false
     has_time: true
   good_morning_time:
