@@ -6,8 +6,6 @@
   condition:
   - condition: time
     weekday:
-      - mon
-      - wed
       - sat
 
   action:
