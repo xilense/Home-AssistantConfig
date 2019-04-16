@@ -56,16 +56,6 @@ notify:
     platform: telegram
     chat_id: !secret telegram_chat_id
 
-input_datetime:
-  portable_switch_time:
-    name: "Portable Switch Time"
-    has_date: false
-    has_time: true
-  good_morning_time:
-    name: "Good Morning Routine Time"
-    has_date: false
-    has_time: true
-
 discovery:
   ignore:
     - yeelight
@@ -78,20 +68,19 @@ xiaomi_aqara:
       mac: !secret aqara_mac
       host: 192.168.1.24
 
-light:
-  - platform: yeelight
-    devices:
-      192.168.1.22:
-        name: Main Light
-        model: color1
-    custom_effects:
-      - name: 'Fire Flicker'
-        flow_params:
-          count: 0
-          transitions:
-            - TemperatureTransition: [1900, 1000, 80]
-            - TemperatureTransition: [1900, 2000, 60]
-            - SleepTransition:       [1000]
+yeelight:
+  devices:
+    192.168.1.22:
+      name: Main Light
+      model: color1
+  custom_effects:
+    - name: 'Fire Flicker'
+      flow_params:
+        count: 0
+        transitions:
+          - TemperatureTransition: [1900, 1000, 80]
+          - TemperatureTransition: [1900, 2000, 60]
+          - SleepTransition:       [1000]
 
 media_player: !include media_player.yaml
 
@@ -206,3 +195,4 @@ person: !include person.yaml
 scene: !include_dir_merge_list scene
 input_boolean: !include_dir_merge_named input_boolean
 input_select: !include_dir_merge_named input_select
+input_datetime: !include_dir_merge_named input_datetime
