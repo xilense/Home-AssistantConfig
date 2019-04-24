@@ -33,6 +33,10 @@ panel_iframe:
     title: IDE
     icon: mdi:code-braces
     url: http://192.168.1.3:8321
+#  pihole:
+#    title: Pi-hole
+#    icon: mdi:block-helper
+#    url: http://192.168.1.3:4865
 
 mqtt:
   broker: core-mosquitto
