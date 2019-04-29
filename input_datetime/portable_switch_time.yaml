@@ -1,0 +1,4 @@
+portable_switch_time:
+  name: "Portable Switch Time"
+  has_date: false
+  has_time: true

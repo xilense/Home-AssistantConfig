@@ -1,0 +1,4 @@
+good_morning_time:
+  name: "Good Morning Routine Time"
+  has_date: false
+  has_time: true
