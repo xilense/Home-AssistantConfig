@@ -166,6 +166,11 @@ logbook:
       - device_tracker.google_maps_101676721020210595319
       - device_tracker.xperia_z3
       - device_tracker.xlns_pc
+      - group.button
+      - binary_sensor.button_a
+      - binary_sensor.button_b
+      - binary_sensor.button_c
+      - binary_sensor.button_d
 
 logger:
   default: info
