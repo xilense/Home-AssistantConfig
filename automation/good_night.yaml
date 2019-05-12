@@ -5,11 +5,6 @@
     to: 'on'
     from: 'off'
 
-  condition:
-  - condition: state
-    entity_id: sun.sun
-    state: 'below_horizon'
-
   action:
   - service: input_select.select_option
     data:
@@ -18,4 +13,5 @@
   - service: switch.turn_on
     entity_id: switch.switch_portable
   - service: input_boolean.turn_off
-    entity_id: input_boolean.good_night
+    data:
+      entity_id: input_boolean.good_night

@@ -7,19 +7,6 @@
   - platform: template
     value_template: '{{ states.sensor.time.state  == (states.input_datetime.good_morning_time.attributes.timestamp | int | timestamp_custom("%H:%M", False))  }}'
 
-  condition:
-  - condition: state
-    entity_id: group.family
-    state: home
-  - condition: time
-    weekday:
-      - mon
-      - tue
-      - wed
-      - thu
-      - fri
-      - sat
-
   action:
   - service: input_select.select_option
     data:
@@ -28,6 +15,8 @@
   - service: switch.turn_off
     entity_id: switch.switch_portable
   - service: input_boolean.turn_off
-    entity_id: input_boolean.alert_mode
+    data: 
+      entity_id: input_boolean.alert_mode
   - service: input_boolean.turn_off
-    entity_id: input_boolean.good_morning
+    data:
+      entity_id: input_boolean.good_morning

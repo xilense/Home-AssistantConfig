@@ -1,0 +1,25 @@
+- alias: 'Alarm'
+  trigger:
+  - platform: state
+    entity_id: input_boolean.good_morning
+    to: 'on'
+    from: 'off'
+  - platform: template
+    value_template: '{{ states.sensor.time.state  == (states.input_datetime.good_morning_time.attributes.timestamp | int | timestamp_custom("%H:%M", False))  }}'
+
+  condition:
+  - condition: state
+    entity_id: group.family
+    state: home
+
+  action:
+  - service: xiaomi_aqara.play_ringtone
+    data:
+      gw_mac: !secret mi_gw_mac
+      ringtone_id: 10002
+      ringtone_vol: 27
+  - service: light.turn_on
+    data:
+      entity_id: light.gateway_light_7c49eb1c097b
+      brightness: 35
+      rgb_color: [255,70,70]
