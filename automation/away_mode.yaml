@@ -12,7 +12,10 @@
     from: 'away'
     to: 'home'
     for: '00:00:11'
-
+  - platform: state
+    entity_id: binary_sensor.Button_A
+    to: 'on'
+  
   condition:
   - condition: state
     entity_id: input_boolean.guest_mode

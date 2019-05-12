@@ -31,6 +31,9 @@
     event_type: telegram_callback
     event_data:
       data: '/xlns_pc_toggle'
+  - platform: state
+    entity_id: binary_sensor.Button_C
+    to: 'on'
   action:
   - service: homeassistant.toggle
     entity_id: switch.switch_xlns_pc

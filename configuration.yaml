@@ -186,7 +186,7 @@ wake_on_lan:
 cloud:
 
 zone: !include zone.yaml
-binary_sensor: !include sensorRF.yaml
+binary_sensor: !include binary_sensor.yaml
 sensor: !include_dir_merge_list sensor
 switch: !include switch.yaml
 group: !include_dir_merge_named group
