@@ -18,6 +18,9 @@ automation.good_night_trigger:
 automation.gaming_mode:
   icon: mdi:steam
 
+automation.alarm:
+  icon: mdi:alarm
+
 # GROUP ########################################################################
 
 group.all_automations:
