@@ -60,6 +60,7 @@ discovery:
   ignore:
     - yeelight
     - igd
+    - openhome
 
 xiaomi_aqara:
   discovery_retry: 10
