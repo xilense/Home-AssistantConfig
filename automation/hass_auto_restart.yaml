@@ -9,4 +9,4 @@
       - sat
 
   action:
-  - service: homeassistant.restart
+  - service: hassio.host_reboot
