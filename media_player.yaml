@@ -1,6 +1,6 @@
 - platform: mpchc
   name: "MPC"
-  host: !secret xlns_pc_ip
+  host: !secret mpc_ip
 
 - platform: kodi
   name: "Kodi"
@@ -22,3 +22,8 @@
   name: "Volumio"
   host: !secret volumio_ip
   port: 3000
+
+#- platform: vlc-telnet
+#  name: "VLC"
+#  host: !secret xlns_pc_ip
+#  password: !secret vlc_password
