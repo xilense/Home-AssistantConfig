@@ -8,11 +8,6 @@
     entity_id: input_boolean.good_night
     to: 'on'
   - platform: state
-    entity_id: device_tracker.xperia_z3
-    from: 'away'
-    to: 'home'
-    for: '00:00:11'
-  - platform: state
     entity_id: binary_sensor.button_a
     to: 'on'
   
