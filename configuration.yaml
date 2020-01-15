@@ -65,7 +65,6 @@ notify:
 
 discovery:
   ignore:
-    - yeelight
     - igd
     - openhome
 

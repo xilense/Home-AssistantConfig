@@ -1,8 +1,7 @@
 - platform: wake_on_lan
-  mac_address: !secret xlns_pc_mac
+  mac: !secret xlns_pc_mac
   name: Switch XLNS-PC
   host: !secret xlns_pc_ip
-  broadcast_address: 192.168.1.255
   turn_off:
       service: hassio.addon_stdin
       data:

@@ -5,6 +5,8 @@
     event_data:
       command: '/start'
   action:
+  - service: homeassistant.turn_on
+    entity_id: group.automation_telegram
   - service: telegram_bot.send_message
     data_template:
       message: "{{'\U0001F3E0'}} *List of Command*"
