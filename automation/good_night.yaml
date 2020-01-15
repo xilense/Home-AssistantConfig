@@ -4,6 +4,9 @@
     entity_id: input_boolean.good_night
     to: 'on'
     from: 'off'
+  - platform: state
+    entity_id: binary_sensor.button_d
+    to: 'on'
 
   action:
   - service: input_select.select_option
