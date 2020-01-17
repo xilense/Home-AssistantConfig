@@ -126,57 +126,6 @@ updater:
 
 conversation:
 
-history:
-  exclude:
-    entities:
-      - sensor.plex
-      - sensor.disk_free_home
-      - sensor.disk_use_percent_home
-      - sensor.memory_use_percent
-      - sensor.memory_free
-      - sensor.joko_to_home
-      - group.all_automations
-      - group.all_devices
-      - group.all_lights
-      - group.all_switches
-    domains:
-      - input_datetime
-      - input_boolean
-
-recorder:
-  purge_interval: 1
-  purge_keep_days: 7
-  exclude:
-    domains:
-      - automation
-      - weblink
-      - updater
-      - persistent_notification
-    entities:
-      - sensor.uptime
-      - sensor.last_boot
-      - sensor.current_version
-      - sensor.ipv4_address_eth0
-      - sensor.time
-      - sensor.processor_use
-      - script.restart_hass
-
-logbook:
-  exclude:
-    entities:
-      - sensor.last_boot
-      - sensor.date
-      - sensor.time
-      - sensor.uptime
-      - device_tracker.google_maps_101676721020210595319
-      - device_tracker.xperia_z3
-      - device_tracker.xlns_pc
-      - group.button
-      - binary_sensor.button_a
-      - binary_sensor.button_b
-      - binary_sensor.button_c
-      - binary_sensor.button_d
-
 logger:
   default: info
   logs:
@@ -196,6 +145,9 @@ wake_on_lan:
 
 cloud:
 
+history: !include history.yaml
+recorder: !include recorder.yaml
+logbook: !include logbook.yaml
 zone: !include zone.yaml
 binary_sensor: !include binary_sensor.yaml
 sensor: !include_dir_merge_list sensor

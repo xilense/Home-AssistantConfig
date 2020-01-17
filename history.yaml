@@ -1,0 +1,15 @@
+exclude:
+  entities:
+    - sensor.plex
+    - sensor.disk_free_home
+    - sensor.disk_use_percent_home
+    - sensor.memory_use_percent
+    - sensor.memory_free
+    - sensor.joko_to_home
+    - group.all_automations
+    - group.all_devices
+    - group.all_lights
+    - group.all_switches
+  domains:
+    - input_datetime
+    - input_boolean

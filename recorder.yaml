@@ -1,0 +1,16 @@
+purge_interval: 1
+purge_keep_days: 7
+exclude:
+  domains:
+    - automation
+    - weblink
+    - updater
+    - persistent_notification
+  entities:
+    - sensor.uptime
+    - sensor.last_boot
+    - sensor.current_version
+    - sensor.ipv4_address_eth0
+    - sensor.time
+    - sensor.processor_use
+    - script.restart_hass
