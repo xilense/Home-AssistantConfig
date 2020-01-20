@@ -97,10 +97,6 @@ media_player: !include media_player.yaml
 #    still_image_url: http://192.168.1.3:8123{{ states.media_player.volumio.attributes.entity_picture }}
 
 device_tracker:
-  - platform: bluetooth_tracker
-    new_device_defaults:
-      track_new_devices: false
-      hide_if_away: False
   - platform: google_maps
     max_gps_accuracy: 100
     username: !secret google_maps_username
