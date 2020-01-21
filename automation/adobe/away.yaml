@@ -1,4 +1,4 @@
-alias: 'Away Mode'
+alias: 'Abobe Away'
 
 trigger:
 - platform: state
@@ -6,25 +6,17 @@ trigger:
   to: 'not_home'
   for: '00:05:00'
 - platform: state
-  entity_id: input_boolean.good_night
-  to: 'on'
-- platform: state
   entity_id: binary_sensor.button_a
   to: 'on'
-  
-condition:
-- condition: state
-  entity_id: input_boolean.guest_mode
-  state: 'off'
 
 action:
 - service: input_select.select_option
   data:
     entity_id: input_select.current_light_theme
     option: "Away"
+- service: input_select.select_option
+  data:
+    entity_id: input_select.abode_status
+    option: "Away"
 - service: input_boolean.turn_on
   entity_id: input_boolean.text_notifications
-- service: input_boolean.turn_on
-  entity_id: input_boolean.away_mode
-- service: input_boolean.turn_on
-  entity_id: input_boolean.alert_mode

@@ -1,9 +1,10 @@
 current_light_theme:
-  name: Current Light Theme
+  name: 'Current Light Theme'
   options:
     - Day
     - Night
     - Movies
     - Sleep
     - Away
+    - Custom
   initial: Day

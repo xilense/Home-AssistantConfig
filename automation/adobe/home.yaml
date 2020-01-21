@@ -1,0 +1,22 @@
+alias: 'Adobe Home'
+
+trigger:
+- platform: state
+  entity_id: group.family
+  to: 'home'
+  for: '00:00:11'
+- platform: state
+  entity_id: binary_sensor.Button_B
+  to: 'on'
+
+action:
+- service: input_select.select_option
+  data:
+    entity_id: input_select.adobe_status
+    option: "Home"
+- service: input_select.select_option
+  data:
+    entity_id: input_select.current_light_theme
+    option: "Day"
+- service: switch.turn_on
+  entity_id: switch.switch_portable

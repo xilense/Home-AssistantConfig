@@ -1,8 +1,8 @@
 adobe_status:
-  name: Adobe status
+  name: 'Adobe status'
   options:
-    - disarmed
-    - armed_home
-    - armed_away
-  initial: disarmed
+    - Standby
+    - Home
+    - Away
+  initial: Standby
   icon: mdi:security

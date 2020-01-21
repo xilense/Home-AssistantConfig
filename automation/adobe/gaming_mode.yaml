@@ -6,9 +6,6 @@ trigger:
     entity_id: sensor.steam_76561198066698938
 
 condition:
-- condition: state
-  entity_id: input_boolean.guest_mode
-  state: 'off'
 - condition: or
   conditions:
   - condition: template
