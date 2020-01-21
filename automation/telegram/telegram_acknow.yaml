@@ -1,0 +1,13 @@
+alias: "Telegram Acknowledges"
+
+trigger:
+  platform: event
+  event_type: telegram_callback
+  event_data:
+    data: '/do_nothing'
+
+action:
+- service: telegram_bot.answer_callback_query
+  data_template:
+    callback_query_id: '{{ trigger.event.data.id }}'
+    message: "OK, as you said!"

@@ -1,0 +1,16 @@
+alias: 'Notif - Disk Almost Full'
+
+trigger:
+- platform: numeric_state
+  entity_id: sensor.disk_use_percent_home
+  above: 90
+  for:
+    minutes: 10
+
+action:
+- service: persistent_notification.create
+  data_template:
+    message: "Disk Almost Full"
+- service: notify.telegram
+  data:
+    message: "{{'\U0001F4BF'}}{{'\U000026A0'}} Disk Almost Full"

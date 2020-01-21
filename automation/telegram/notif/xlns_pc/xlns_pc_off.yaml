@@ -1,0 +1,12 @@
+alias: 'Notif - XLNS-PC off'
+
+trigger:
+- platform: state
+  entity_id: switch.switch_xlns_pc
+  from: 'on'
+  to: 'off'
+
+action:
+- service: notify.telegram
+  data:
+    message: "{{'\U0001F5A5'}}{{'\U000026A1'}} *XLNS-PC* turned off"

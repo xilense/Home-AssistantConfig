@@ -1,0 +1,13 @@
+alias: 'Notif - Download Failed'
+
+trigger:
+- platform: event
+  event_type: downloader_download_failed
+
+action:
+- service: persistent_notification.create
+  data_template:
+    message: "Download failed"
+- service: notify.telegram
+  data:
+    message: "{{'\U0001F4E5'}}{{'\U0000274C'}} Download failed"

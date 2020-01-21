@@ -1,0 +1,19 @@
+alias: "Telegram Home"
+
+trigger:
+- platform: event
+  event_type: telegram_command
+  event_data:
+    command: '/start'
+
+action:
+- service: homeassistant.turn_on
+  entity_id: group.automation_telegram
+- service: telegram_bot.send_message
+  data_template:
+    message: "{{'\U0001F3E0'}} *List of Command*"
+    target: '{{ trigger.event.data.user_id }}'
+    disable_notification: true
+    inline_keyboard:
+      - "{{'\U000026A1'}} Switch:/switch, {{'\U0001F4A1'}}Light:/light, {{'\U000025B6'}} Media:/media, {{'\U0001F464'}} Family:/family"
+      - "{{'\U0001F4E5'}} Service:/service, {{'\U00002699'}} System:/system, {{'\U0000274E'}} Close:/remove_button"

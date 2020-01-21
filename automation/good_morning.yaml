@@ -1,22 +1,23 @@
-- alias: 'Good Morning Routine'
-  trigger:
-  - platform: state
-    entity_id: input_boolean.good_morning
-    to: 'on'
-    from: 'off'
-  - platform: template
-    value_template: '{{ states.sensor.time.state  == (states.input_datetime.good_morning_time.attributes.timestamp | int | timestamp_custom("%H:%M", False))  }}'
+alias: 'Good Morning Routine'
 
-  action:
-  - service: input_select.select_option
-    data:
-      entity_id: input_select.current_light_theme
-      option: "Day"
-  - service: switch.turn_off
-    entity_id: switch.switch_portable
-  - service: input_boolean.turn_off
-    data: 
-      entity_id: input_boolean.alert_mode
-  - service: input_boolean.turn_off
-    data:
-      entity_id: input_boolean.good_morning
+trigger:
+- platform: state
+  entity_id: input_boolean.good_morning
+  to: 'on'
+  from: 'off'
+- platform: template
+  value_template: '{{ states.sensor.time.state  == (states.input_datetime.good_morning_time.attributes.timestamp | int | timestamp_custom("%H:%M", False))  }}'
+
+action:
+- service: input_select.select_option
+  data:
+    entity_id: input_select.current_light_theme
+    option: "Day"
+- service: switch.turn_off
+  entity_id: switch.switch_portable
+- service: input_boolean.turn_off
+  data: 
+    entity_id: input_boolean.alert_mode
+- service: input_boolean.turn_off
+  data:
+    entity_id: input_boolean.good_morning

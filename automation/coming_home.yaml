@@ -1,31 +1,32 @@
-- alias: "Coming Home"
-  trigger:
-  - platform: state
-    entity_id: group.family
-    to: 'home'
-    for: '00:00:11'
-  - platform: state
-    entity_id: device_tracker.xperia_z3
-    from: 'away'
-    to: 'home'
-    for: '00:00:11'
-  - platform: state
-    entity_id: binary_sensor.Button_B
-    to: 'on'
+alias: 'Coming Home'
 
-#  condition:
-#  - condition: state
-#    entity_id: switch.switch_portable
-#    state: 'off'
+trigger:
+- platform: state
+  entity_id: group.family
+  to: 'home'
+  for: '00:00:11'
+- platform: state
+  entity_id: device_tracker.xperia_z3
+  from: 'away'
+  to: 'home'
+  for: '00:00:11'
+- platform: state
+  entity_id: binary_sensor.Button_B
+  to: 'on'
 
-  action:
-  - service: input_select.select_option
-    data:
-      entity_id: input_select.current_light_theme
-      option: "Day"
-  - service: switch.turn_on
-    entity_id: switch.switch_portable
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.away_mode
-  - service: input_boolean.turn_off
-    entity_id: input_boolean.alert_mode
+#condition:
+#- condition: state
+#  entity_id: switch.switch_portable
+#  state: 'off'
+
+action:
+- service: input_select.select_option
+  data:
+    entity_id: input_select.current_light_theme
+    option: "Day"
+- service: switch.turn_on
+  entity_id: switch.switch_portable
+- service: input_boolean.turn_off
+  entity_id: input_boolean.away_mode
+- service: input_boolean.turn_off
+  entity_id: input_boolean.alert_mode

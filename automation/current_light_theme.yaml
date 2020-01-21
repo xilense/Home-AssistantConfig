@@ -1,16 +1,17 @@
-- alias: 'Current Light Theme'
-  trigger:
-  - platform: event
-    event_type: state_changed
-    event_data:
-      entity_id: input_select.current_light_theme
+alias: 'Current Light Theme'
 
-  condition:
-  - condition: state
-    entity_id: input_boolean.guest_mode
-    state: 'off'
+trigger:
+- platform: event
+  event_type: state_changed
+  event_data:
+    entity_id: input_select.current_light_theme
 
-  action:
-  - service: scene.turn_on
-    data_template:
-      entity_id: "scene.{{ states.input_select.current_light_theme.state }}"
+condition:
+- condition: state
+  entity_id: input_boolean.guest_mode
+  state: 'off'
+
+action:
+- service: scene.turn_on
+  data_template:
+    entity_id: "scene.{{ states.input_select.current_light_theme.state }}"

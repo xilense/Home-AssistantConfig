@@ -1,0 +1,23 @@
+alias: "Hass Feedback"
+initial_state: 'on'
+
+trigger:
+- platform: state
+  entity_id: group.button
+  to: 'on'
+
+action:
+- service: xiaomi_aqara.play_ringtone
+  data:
+    gw_mac: !secret aqara_mac
+    ringtone_id: 10007
+    ringtone_vol: 50
+- service: light.turn_on
+  data:
+    entity_id: light.gateway_light_7c49eb1c097b
+    brightness: 91
+    rgb_color: [255,36,36]
+- delay: 00:00:00.5
+- service: light.turn_off
+  data:
+    entity_id: light.gateway_light_7c49eb1c097b

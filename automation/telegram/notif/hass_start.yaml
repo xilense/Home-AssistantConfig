@@ -1,0 +1,10 @@
+alias: 'Notif - HASS Started'
+
+trigger:
+- platform: homeassistant
+  event: start
+
+action:
+- service: notify.telegram
+  data:
+    message: "{{'\U0001F3E0'}}{{'\U000026A1'}} *Home Assistant* just started"

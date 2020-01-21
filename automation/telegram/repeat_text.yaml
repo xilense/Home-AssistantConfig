@@ -1,0 +1,22 @@
+alias: "Telegram Repeats Text"
+
+trigger:
+  platform: event
+  event_type: telegram_text
+
+action:
+- service: telegram_bot.send_message
+  data_template:
+    title: "{{'\U0001F514'}}️ *Dumb automation*"
+    message: 'You said: {{ trigger.event.data.text }}'
+    target: '{{ trigger.event.data.user_id }}'
+    disable_notification: true
+    inline_keyboard:
+      - "Edit message:/edit_msg, Don't:/do_nothing"
+      - "Remove this button:/remove_button"
+- service: notify.pushbullet
+  data_template:
+    message: "{{'\U0001F514'}} You said: {{ trigger.event.data.text }}"
+- service: persistent_notification.create
+  data_template:
+    message: "{{'\U0001F514'}} You said: {{ trigger.event.data.text }}"

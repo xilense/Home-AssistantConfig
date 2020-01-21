@@ -1,0 +1,22 @@
+alias: "Telegram Volumio"
+
+trigger:
+- platform: event
+  event_type: telegram_callback
+  event_data:
+    data: '/volumio'
+
+action:
+- service: telegram_bot.delete_message
+  data_template:
+    message_id: '{{ trigger.event.data.message.message_id }}'
+    chat_id: '{{ trigger.event.data.user_id }}'
+- service: telegram_bot.send_photo
+  data_template:
+    url: http://192.168.1.3:8123{{ states.media_player.volumio.attributes.entity_picture }}
+    caption: "{{'\U000025B6'}} *Volumio* {{ states.media_player.volumio.state }} *{{ states.media_player.volumio.attributes.media_artist }}* - *{{ states.media_player.volumio.attributes.media_title }}*"
+    target: '{{ trigger.event.data.user_id }}'
+    disable_notification: true
+    inline_keyboard:
+      - "{{'\U000023EE'}} Prev:/volumio_prev, {{'\U000023EF'}} Play/Pause:/volumio_playpause, {{'\U000023ED'}} Next:/volumio_next"
+      - "{{'\U0001F500'}} All Random:/volumio_all_random, {{'\U0001F504'}} Reload:/volumio, {{'\U0001F3E0'}} Home Menu:/start, {{'\U000021A9'}} Back:/media"
