@@ -1,10 +1,6 @@
-alias: 'Abobe Away'
+alias: 'Button A'
 
 trigger:
-- platform: state
-  entity_id: group.family
-  to: 'not_home'
-  for: '00:05:00'
 - platform: state
   entity_id: binary_sensor.button_a
   to: 'on'
@@ -12,11 +8,11 @@ trigger:
 action:
 - service: input_select.select_option
   data:
-    entity_id: input_select.current_light_theme
-    option: "Away"
+    entity_id: input_select.abode_status
+    option: 'Away'
 - service: input_select.select_option
   data:
-    entity_id: input_select.abode_status
-    option: "Away"
+    entity_id: input_select.current_light_theme
+    option: 'Away'
 - service: input_boolean.turn_on
   entity_id: input_boolean.text_notifications

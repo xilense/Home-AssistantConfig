@@ -1,0 +1,34 @@
+alias: 'Adobe Home'
+initial_state: 'on'
+
+trigger:
+- platform: time_pattern
+  minutes: '/10'
+# coming home trigger
+- platform: state
+  entity_id: group.family
+  to: 'home'
+  for: '00:00:11'
+
+condition:
+- condition: state
+  entity_id: group.family
+  state: 'home'
+- condition: state
+  entity_id: input_boolean.guest_mode
+  state: 'off'
+
+action:
+- service: input_select.select_option
+  data:
+    entity_id: input_select.adobe_status
+    option: 'Home'
+# coming home action
+- condition: template
+  value_template: "{{ trigger.entity_id == 'group.family' }}"
+- service: input_select.select_option
+  data:
+    entity_id: input_select.current_light_theme
+    option: 'Day'
+- service: switch.turn_on
+  entity_id: switch.switch_portable

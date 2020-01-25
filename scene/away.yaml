@@ -1,9 +1,9 @@
-name: Away
+name: 'Away'
 entities:
   light.main_light:
-    state: false
+    state: off
     transition: 15
   light.gateway_light_7c49eb1c097b:
-    state: false
+    state: off
   switch.switch_portable:
-    state: false
+    state: off

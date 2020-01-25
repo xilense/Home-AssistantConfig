@@ -1,0 +1,4 @@
+name: 'Light'
+control: hidden
+entities:
+  - light.gateway_light_7c49eb1c097b

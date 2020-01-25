@@ -1,5 +1,5 @@
 homeassistant:
-  name: "Home"
+  name: 'Home'
   latitude: !secret home_latitude
   longitude: !secret home_longitude
   elevation: !secret home_elevation
@@ -10,36 +10,39 @@ homeassistant:
 #    automation:
 #      initial_state: 'on'
   customize_glob:
-    "automation.telegram_*":
+    'automation.button_*':
+      icon: mdi:remote
+      initial_state: 'on'
+      hidden: true
+    'automation.telegram_*':
       icon: mdi:telegram
       initial_state: 'on'
       hidden: true
-    "automation.notif_*":
+    'automation.notif_*':
       icon: mdi:bell
       initial_state: 'on'
-      hidden: true
-    "automation.hass_*":
+    'automation.hass_*':
       icon: mdi:home-assistant
       initial_state: 'on'
-      hidden: true
   auth_providers:
     - type: homeassistant
     - type: trusted_networks
       trusted_networks:
-        - 192.168.1.11
+        - !secret z4_ip
+        - !secret xlns_pc_ip
 #        - 192.168.1.0/24
 
 panel_iframe:
   tasmoadmin:
-    title: "TasmoAdmin"
+    title: 'TasmoAdmin'
     icon: mdi:lightbulb-on
     url: http://192.168.1.3:9541
   ide:
-    title: IDE
+    title: 'IDE'
     icon: mdi:code-braces
     url: http://192.168.1.3:8321
 #  pihole:
-#    title: Pi-hole
+#    title: 'Pi-hole'
 #    icon: mdi:block-helper
 #    url: http://192.168.1.3:4865
 
@@ -53,14 +56,14 @@ ifttt:
 
 telegram_bot:
   - platform: polling
-    api_key: !secret telegram_bot_api_key
+    api_key: !secret telegram_bot_api
     allowed_chat_ids:
       !include telegram_chat_id.yaml
 
 notify:
-  - name: Pushbullet
+  - name: 'Pushbullet'
     platform: pushbullet
-    api_key: !secret pushbullet_api_key
+    api_key: !secret pushbullet_api
   - name: Telegram
     platform: telegram
     chat_id: !secret xlns_telegram_id
@@ -92,7 +95,7 @@ yeelight:
 
 #camera:
 #  - platform: generic
-#    name: Volumio Album Art
+#    name: 'Volumio Album Art'
 #    still_image_url: http://192.168.1.3:8123{{ states.media_player.volumio.attributes.entity_picture }}
 
 device_tracker:
@@ -100,13 +103,15 @@ device_tracker:
     max_gps_accuracy: 100
     username: !secret google_maps_username
 
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api
+
 downloader:
   download_dir: download
 
 frontend:
   themes: !include themes.yaml
-
-config:
 
 http:
 #  api_password: !secret http_api_password
@@ -117,28 +122,23 @@ http:
   ip_ban_enabled: true
   login_attempts_threshold: 5
 
-updater:
-
-conversation:
-
 logger:
   default: info
   logs:
     homeassistant.components.media_player.mpchc: fatal
 
-map:
-
 tts:
   - platform: google_translate
     service_name: google_say
 
+map:
 sun:
-
-system_health:
-
-wake_on_lan:
-
 cloud:
+config:
+updater:
+wake_on_lan:
+conversation:
+system_health:
 
 zone: !include zone.yaml
 person: !include person.yaml
@@ -146,16 +146,17 @@ switch: !include switch.yaml
 logbook: !include logbook.yaml
 history: !include history.yaml
 recorder: !include recorder.yaml
-media_player: !include media_player.yaml
-binary_sensor: !include binary_sensor.yaml
 
 scene: !include_dir_list scene
 sensor: !include_dir_list sensor
 automation: !include_dir_list automation
+media_player: !include_dir_list media_player
 
 group: !include_dir_named group
 script: !include_dir_named script
 
-input_boolean: !include_dir_merge_named input_boolean
+binary_sensor: !include_dir_merge_list binary_sensor
+
 input_select: !include_dir_merge_named input_select
+input_boolean: !include_dir_merge_named input_boolean
 input_datetime: !include_dir_merge_named input_datetime

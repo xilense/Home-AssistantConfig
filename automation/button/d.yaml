@@ -1,10 +1,9 @@
-alias: 'Routine Good Night'
+alias: 'Button D'
 
 trigger:
 - platform: state
-  entity_id: input_boolean.good_night
+  entity_id: binary_sensor.button_d
   to: 'on'
-  from: 'off'
 
 action:
 - service: input_select.select_option

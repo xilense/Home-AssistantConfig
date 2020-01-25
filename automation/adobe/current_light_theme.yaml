@@ -1,15 +1,11 @@
 alias: 'Current Light Theme'
+initial_state: 'on'
 
 trigger:
 - platform: event
   event_type: state_changed
   event_data:
     entity_id: input_select.current_light_theme
-
-condition:
-- condition: state
-  entity_id: input_boolean.guest_mode
-  state: 'off'
 
 action:
 - service: scene.turn_on

@@ -1,0 +1,4 @@
+platform: volumio
+name: 'Volumio'
+host: !secret volumio_ip
+port: 3000

@@ -1,4 +1,4 @@
-alias: 'Good Morning Routine'
+alias: 'Routine Good Morning'
 
 trigger:
 - platform: state

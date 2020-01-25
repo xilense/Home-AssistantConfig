@@ -1,9 +1,9 @@
-name: Movies
+name: 'Movies'
 entities:
   light.main_light:
-    state: true
+    state: on
     brightness: 41
     color_temp: 362
     transition: 15
   switch.switch_portable:
-    state: true
+    state: on

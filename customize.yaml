@@ -1,18 +1,9 @@
 # AUTOMATION ###################################################################
 
-automation.coming_home:
-  icon: mdi:home
-
-automation.portable_switch_timer:
-  icon: mdi:timer
-
-automation.away_mode:
-  icon: mdi:account-arrow-right
-
-automation.good_morning_routine:
+automation.routine_good_morning:
   icon: mdi:weather-sunny
 
-automation.good_night_trigger:
+automation.routine_good_night:
   icon: mdi:weather-night
 
 automation.gaming_mode:
@@ -21,30 +12,19 @@ automation.gaming_mode:
 automation.alarm:
   icon: mdi:alarm
 
-# GROUP ########################################################################
+automation.adobe_home:
+  icon: mdi:home-account
 
-group.all_automations:
-  friendly_name: All Automations
+automation.adobe_away:
+  icon: mdi:home-lock
 
-group.all_devices:
-  friendly_name: All Devices
-
-group.all_scripts:
-  friendly_name: All Scripts
-
-group.all_switches:
-  friendly_name: All Switches
-
-group.all_lights:
-  friendly_name: All Lights
+automation.current_light_theme:
+  icon: mdi:palette
 
 # SENSOR #######################################################################
 
 sensor.memory_use_percent:
   friendly_name: Memory
-
-sensor.yr_symbol:
-  friendly_name: Weather
 
 sensor.memory_free:
   unit_of_measurement: MB

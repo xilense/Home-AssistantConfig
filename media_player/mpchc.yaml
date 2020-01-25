@@ -1,0 +1,3 @@
+platform: mpchc
+name: 'MPC'
+host: !secret mpc_ip

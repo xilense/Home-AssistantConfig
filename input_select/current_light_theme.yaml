@@ -7,4 +7,5 @@ current_light_theme:
     - Sleep
     - Away
     - Custom
-  initial: Day
+  initial: Custom
+  icon: mdi:palette

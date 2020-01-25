@@ -1,0 +1,8 @@
+platform: kodi
+name: 'Kodi'
+host: !secret xlns_pc_ip
+turn_off_action:
+  service: media_player.kodi_call_method
+  data:
+    entity_id: media_player.kodi
+    method: Application.Quit

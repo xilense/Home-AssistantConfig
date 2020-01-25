@@ -1,4 +1,4 @@
-name: Telegram
+name: 'Telegram'
 all: true
 entities:
   - automation.telegram_acknowledges

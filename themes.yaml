@@ -1,4 +1,4 @@
-clear:
+light:
   # Background image
   background-image: 'center / cover no-repeat url("/local/day.jpg") fixed'
 

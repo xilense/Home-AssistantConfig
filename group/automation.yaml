@@ -1,0 +1,25 @@
+name: 'Automation'
+all: true
+entities:
+  - automation.adobe_away
+  - automation.adobe_home
+  - automation.alarm
+  - automation.button_a
+  - automation.button_b
+  - automation.button_c
+  - automation.button_d
+  - automation.current_light_theme
+  - automation.gaming_mode
+  - automation.hass_auto_backup
+  - automation.hass_auto_restart
+  - automation.hass_feedback
+  - automation.hass_startup
+  - automation.notif_disk_almost_full
+  - automation.notif_download_failed
+  - automation.notif_hass_started
+  - automation.notif_update_available
+  - automation.notif_xlns_pc_off
+  - automation.notif_xlns_pc_on
+  - automation.portable_switch_timer
+  - automation.routine_good_morning
+  - automation.routine_good_night

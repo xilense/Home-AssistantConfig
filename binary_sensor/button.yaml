@@ -1,5 +1,5 @@
 - platform: mqtt
-  name: "Button_A"
+  name: 'Button_A'
   state_topic: "tele/RF_Bridge/RESULT"
   value_template: '{{value_json.RfReceived.Data}}'
   payload_on: '67A622'
@@ -7,7 +7,7 @@
   off_delay: 1
 
 - platform: mqtt
-  name: "Button_B"
+  name: 'Button_B'
   state_topic: "tele/RF_Bridge/RESULT"
   value_template: '{{value_json.RfReceived.Data}}'
   payload_on: 'C545C0'
@@ -15,7 +15,7 @@
   off_delay: 1
 
 - platform: mqtt
-  name: "Button_C"
+  name: 'Button_C'
   state_topic: "tele/RF_Bridge/RESULT"
   value_template: '{{value_json.RfReceived.Data}}'
   payload_on: '67A621'
@@ -23,7 +23,7 @@
   off_delay: 1
 
 - platform: mqtt
-  name: "Button_D"
+  name: 'Button_D'
   state_topic: "tele/RF_Bridge/RESULT"
   value_template: '{{value_json.RfReceived.Data}}'
   payload_on: '67A624'

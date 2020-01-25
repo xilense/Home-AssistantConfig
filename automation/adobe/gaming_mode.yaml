@@ -1,4 +1,5 @@
 alias: 'Gaming Mode'
+
 trigger:
 - platform: event
   event_type: state_changed
@@ -17,4 +18,4 @@ action:
 - service: input_select.select_option
   data:
     entity_id: input_select.current_light_theme
-    option: "Movies"
+    option: 'Movies'

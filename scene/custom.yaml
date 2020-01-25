@@ -1,0 +1,4 @@
+name: 'Custom'
+entities:
+  switch.adguard_protection:
+    state: on

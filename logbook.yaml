@@ -4,11 +4,14 @@ exclude:
     - sensor.date
     - sensor.time
     - sensor.uptime
-    - device_tracker.google_maps_101676721020210595319
-    - device_tracker.xperia_z3
-    - device_tracker.xlns_pc
-    - group.button
-    - binary_sensor.button_a
-    - binary_sensor.button_b
-    - binary_sensor.button_c
-    - binary_sensor.button_d
+    
+    - switch.adguard_filtering
+    - switch.adguard_parental_control
+    - switch.adguard_protection
+    - switch.adguard_query_log
+    - switch.adguard_safe_browsing
+    - switch.adguard_safe_search
+  domains:
+    - group
+    - device_tracker
+    - binary_sensor

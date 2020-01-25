@@ -1,0 +1,10 @@
+alias: 'Button C'
+
+trigger:
+- platform: state
+  entity_id: binary_sensor.button_c
+  to: 'on'
+
+action:
+- service: homeassistant.toggle
+  entity_id: switch.switch_xlns_pc

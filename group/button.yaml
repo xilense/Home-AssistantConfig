@@ -1,4 +1,4 @@
-name: Button
+name: 'Button'
 control: hidden
 entities:
   - binary_sensor.button_a

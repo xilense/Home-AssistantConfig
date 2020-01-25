@@ -1,0 +1,30 @@
+alias: 'Adobe Away'
+initial_state: 'on'
+
+trigger:
+- platform: time_pattern
+  minutes: '/10'
+- platform: state
+  entity_id: group.family
+  to: 'not_home'
+  for: '00:05:00'
+  
+condition:
+- condition: state
+  entity_id: group.family
+  state: 'not_home'
+- condition: state
+  entity_id: input_boolean.guest_mode
+  state: 'off'
+
+action:
+- service: input_select.select_option
+  data:
+    entity_id: input_select.abode_status
+    option: 'Away'
+- service: input_select.select_option
+  data:
+    entity_id: input_select.current_light_theme
+    option: 'Away'
+- service: input_boolean.turn_on
+  entity_id: input_boolean.text_notifications

@@ -1,0 +1,7 @@
+current_ui_theme:
+  name: 'Current UI Theme'
+  options:
+    - light
+    - dark
+  initial: light
+  icon: mdi:palette

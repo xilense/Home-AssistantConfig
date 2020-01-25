@@ -1,5 +1,6 @@
-alias: 'Person Logger'
+alias: 'Logger - Person'
 initial_state: 'on'
+
 trigger:
   - platform: state
     entity_id:
@@ -15,4 +16,4 @@ action:
     name: "{{trigger.to_state.name}}"
     message: " changed from {{trigger.from_state.state}} to {{trigger.to_state.state}}"
     entity_id: "{{trigger.entity_id}}"
-    domain: person
+#    domain: person

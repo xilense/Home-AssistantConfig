@@ -1,4 +1,4 @@
-alias: 'Notif - HASS Started'
+alias: 'Notif - Hass Started'
 
 trigger:
 - platform: homeassistant
