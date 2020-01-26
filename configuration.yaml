@@ -103,6 +103,10 @@ device_tracker:
     max_gps_accuracy: 100
     username: !secret google_maps_username
 
+google:
+  client_id: !secret google_cal_id
+  client_secret: !secret google_cal_secret
+
 weather:
   - platform: darksky
     api_key: !secret darksky_api

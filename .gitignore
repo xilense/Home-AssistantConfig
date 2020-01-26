@@ -15,6 +15,7 @@ deps
 .uuid
 .google_maps_location_sharing.cookies
 .google_maps_location_sharing.cookies.lelono1130_gmail_com
+google_calendars.yaml
 ip_bans.yaml
 secrets.yaml
 known_devices.yaml
