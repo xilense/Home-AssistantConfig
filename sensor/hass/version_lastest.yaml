@@ -1,0 +1,5 @@
+platform: version
+name: 'Latest Version'
+beta: false
+image: raspberrypi3
+source: hassio

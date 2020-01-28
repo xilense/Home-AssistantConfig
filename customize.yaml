@@ -24,32 +24,42 @@ automation.current_light_theme:
 # SENSOR #######################################################################
 
 sensor.memory_use_percent:
-  friendly_name: Memory
+  friendly_name: 'Memory'
 
 sensor.memory_free:
   unit_of_measurement: MB
 
 sensor.disk_free_home:
-  friendly_name: Disk free
+  friendly_name: 'Disk free'
   unit_of_measurement: GB
 
 sensor.disk_use_percent_home:
-  friendly_name: Disk use
+  friendly_name: 'Disk use'
 
 sensor.ipv4_address_eth0:
-  friendly_name: IP address
+  friendly_name: 'IP address'
 
 sensor.processor_use:
-  friendly_name: CPU
+  friendly_name: 'CPU'
+
+sensor.installed_version:
+  icon: mdi:home-assistant
+
+sensor.latest_version:
+  icon: mdi:update
+
+sensor.home_assistant_v2_db:
+  friendly_name: 'Database'
+  icon: mdi:database
 
 # LIGHT ########################################################################
 
 light.yeelight_rgb_7c49eb158f0a:
-  friendly_name: Main Light
+  friendly_name: 'Main Light'
 
 # STEAM ########################################################################
 
 sensor.steam_76561198066698938:
-  friendly_name: xlns
+  friendly_name: 'xlns'
 
 ################################################################################
