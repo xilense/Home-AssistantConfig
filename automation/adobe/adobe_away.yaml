@@ -13,6 +13,8 @@ condition:
 - condition: state
   entity_id: group.family
   state: 'not_home'
+- condition: template
+  value_template: "{{ states.input_select.adobe_status.state != 'Away' }}"
 - condition: state
   entity_id: input_boolean.guest_mode
   state: 'off'
@@ -20,7 +22,7 @@ condition:
 action:
 - service: input_select.select_option
   data:
-    entity_id: input_select.abode_status
+    entity_id: input_select.adobe_status
     option: 'Away'
 - service: input_select.select_option
   data:
