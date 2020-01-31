@@ -1,0 +1,26 @@
+media_player:
+  platform: universal
+  name: 'AIMP'
+  commands:
+    volume_up:
+      service: mqtt.publish
+      data:
+        topic: aimp/control
+        payload: 'volume_up'
+    volume_down:
+      service: mqtt.publish
+      data:
+        topic: aimp/control
+        payload: 'xxx'
+    volume_mute:
+      service: mqtt.publish
+      data:
+        topic: aimp/control
+        payload: 'xxx'
+
+  attributes:
+    state: switch.living_room_tv
+    is_volume_muted: switch.living_room_mute
+    volume_level: media_player.receiver|volume_level
+    source: media_player.receiver|source
+    source_list: media_player.receiver|source_list
