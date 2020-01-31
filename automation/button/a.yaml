@@ -8,7 +8,7 @@ trigger:
 action:
 - service: input_select.select_option
   data:
-    entity_id: input_select.abode_status
+    entity_id: input_select.adobe_status
     option: 'Away'
 - service: input_select.select_option
   data:

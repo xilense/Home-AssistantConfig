@@ -7,7 +7,7 @@ automation.routine_good_night:
   icon: mdi:weather-night
 
 automation.gaming_mode:
-  icon: mdi:steam
+  icon: mdi:google-controller
 
 automation.alarm:
   icon: mdi:alarm
@@ -60,6 +60,6 @@ light.yeelight_rgb_7c49eb158f0a:
 # STEAM ########################################################################
 
 sensor.steam_76561198066698938:
-  friendly_name: 'xlns'
+  friendly_name: 'XLNS Steam'
 
 ################################################################################
