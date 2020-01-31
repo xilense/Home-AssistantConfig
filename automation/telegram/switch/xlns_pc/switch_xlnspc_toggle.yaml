@@ -1,4 +1,4 @@
-alias: "Telegram Toggle XLNS-PC"
+alias: "Telegram Switch XLNS-PC Toggle"
 
 trigger:
 - platform: event

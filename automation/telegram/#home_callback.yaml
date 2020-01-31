@@ -13,7 +13,12 @@ action:
     chat_id: '{{ trigger.event.data.user_id }}'
 - service: telegram_bot.send_message
   data_template:
-    message: "{{'\U0001F3E0'}} *List of Command*"
+    message: "*Home Status* {{ states.input_select.adobe_status.state }}
+    
+    *Light Theme* {{ states.input_select.current_light_theme.state }}
+    
+    
+    {{'\U0001F3E0'}} *List of Command*"
     target: '{{ trigger.event.data.user_id }}'
     disable_notification: true
     inline_keyboard:

@@ -29,12 +29,12 @@ entities:
   - automation.telegram_service_menu
   - automation.telegram_switch_menu
   - automation.telegram_switch_portable
+  - automation.telegram_switch_portable_toggle
   - automation.telegram_switch_xlns_pc
+  - automation.telegram_switch_xlns_pc_toggle
   - automation.telegram_switch_04
+  - automation.telegram_switch_04_toggle
   - automation.telegram_system_menu
-  - automation.telegram_toggle_switch_portable
-  - automation.telegram_toggle_switch_04
-  - automation.telegram_toggle_xlns_pc
   - automation.telegram_volumio
   - automation.telegram_volumio_all_random
   - automation.telegram_volumio_next

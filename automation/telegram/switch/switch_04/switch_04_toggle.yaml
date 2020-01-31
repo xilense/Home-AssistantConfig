@@ -1,4 +1,4 @@
-alias: "Telegram Toggle Switch_04"
+alias: "Telegram Switch_04 Toggle"
 
 trigger:
 - platform: event

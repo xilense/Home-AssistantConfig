@@ -13,9 +13,9 @@ action:
     chat_id: '{{ trigger.event.data.user_id }}'
 - service: telegram_bot.send_message
   data_template:
-    message: "{{'\U0001F4A1'}} *Main Light* currently {{ states('light.main_light') }}
+    message: "*Main Light* currently {{ states('light.main_light') }}
 
-{{'\U00002699'}} *Main Light Command*"
+{{'\U0001F4A1'}} *Main Light Command*"
     target: '{{ trigger.event.data.user_id }}'
     disable_notification: true
     inline_keyboard:
