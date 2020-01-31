@@ -4,6 +4,8 @@ exclude:
     - sensor.date
     - sensor.time
     - sensor.uptime
+    - sensor.dark_sky_summary
+    - sensor.dark_sky_summary_1d
     
     - switch.adguard_filtering
     - switch.adguard_parental_control
@@ -11,6 +13,7 @@ exclude:
     - switch.adguard_query_log
     - switch.adguard_safe_browsing
     - switch.adguard_safe_search
+    
   domains:
     - group
     - device_tracker

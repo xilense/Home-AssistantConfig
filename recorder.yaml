@@ -2,16 +2,31 @@ purge_interval: 1
 purge_keep_days: 7
 exclude:
   entities:
+    - binary_sensor.button_a
+    - binary_sensor.button_b
+    - binary_sensor.button_c
+    - binary_sensor.button_d
     - binary_sensor.remote_ui
     - binary_sensor.updater
     
-    - sensor.current_version
+    - sensor.latest_version
+    - sensor.installed_version
     - sensor.ipv4_address_eth0
     - sensor.last_boot
     - sensor.processor_use
     - sensor.time
     - sensor.uptime
+    
+    - switch.adguard_filtering
+    - switch.adguard_parental_control
+    - switch.adguard_protection
+    - switch.adguard_query_log
+    - switch.adguard_safe_browsing
+    - switch.adguard_safe_search
+    
   domains:
+    - automation
     - weblink
     - updater
     - persistent_notification
+    - calendar
