@@ -15,7 +15,6 @@ homeassistant:
     'automation.button_*':
       icon: mdi:remote
       initial_state: 'on'
-      hidden: true
     'automation.telegram_*':
       icon: mdi:telegram
       initial_state: 'on'
@@ -116,9 +115,6 @@ weather:
 downloader:
   download_dir: download
 
-frontend:
-  themes: !include themes.yaml
-
 http:
 #  api_password: !secret http_api_password
 #  base_url: !secret http_base_url
@@ -136,6 +132,9 @@ logger:
 tts:
   - platform: google_translate
     service_name: google_say
+
+frontend:
+  themes: !include_dir_merge_named themes
 
 map:
 sun:
