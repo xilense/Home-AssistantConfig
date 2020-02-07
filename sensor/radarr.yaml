@@ -1,0 +1,7 @@
+platform: radarr
+api_key: !secret radarr_api
+host: !secret xlns_pc_ip
+monitored_conditions:
+  - movies
+  - upcoming
+  - diskspace
