@@ -1,0 +1,7 @@
+platform: plex_recently_added
+name: 'Recently Added'
+token: !secret plex_token
+host: !secret xlns_pc_ip
+port: !secret plex_port
+max: 1
+img_dir: '/plex/'

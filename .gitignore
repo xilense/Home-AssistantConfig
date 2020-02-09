@@ -10,6 +10,7 @@
 tts
 download
 deps
+www/plex
 
 # these YAML files are ignored
 .uuid
