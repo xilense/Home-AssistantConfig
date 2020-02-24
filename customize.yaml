@@ -21,6 +21,17 @@ automation.adobe_away:
 automation.current_light_theme:
   icon: mdi:palette
 
+automation.current_ui_theme:
+  icon: mdi:palette
+
+automation.portable_switch_timer:
+  icon: mdi:alarm
+
+# SENSOR #######################################################################
+
+person.joko:
+  entity_picture: '/local/joko.png'
+
 # SENSOR #######################################################################
 
 sensor.memory_use_percent:
@@ -61,5 +72,10 @@ light.yeelight_rgb_7c49eb158f0a:
 
 sensor.steam_76561198066698938:
   friendly_name: 'XLNS Steam'
+
+# STEAM ########################################################################
+
+switch.xlns_pc:
+  icon: mdi:monitor
 
 ################################################################################

@@ -1,0 +1,13 @@
+alias: 'Current UI Theme'
+initial_state: 'on'
+
+trigger:
+- platform: event
+  event_type: state_changed
+  event_data:
+    entity_id: input_select.current_ui_theme
+
+action:
+- service: frontend.set_theme
+  data_template:
+    name: "{{ states.input_select.current_ui_theme.state }}"

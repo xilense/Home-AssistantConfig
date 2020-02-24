@@ -9,6 +9,7 @@ entities:
   - automation.button_c
   - automation.button_d
   - automation.current_light_theme
+  - automation.current_ui_theme
   - automation.gaming_mode
   - automation.hass_auto_backup
   - automation.hass_auto_restart

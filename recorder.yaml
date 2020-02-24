@@ -17,6 +17,8 @@ exclude:
     - sensor.time
     - sensor.uptime
     
+    - sensor.hacs
+    
     - switch.adguard_filtering
     - switch.adguard_parental_control
     - switch.adguard_protection
