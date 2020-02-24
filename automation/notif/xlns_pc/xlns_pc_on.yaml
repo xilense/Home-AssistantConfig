@@ -2,7 +2,7 @@ alias: 'Notif - XLNS-PC on'
 
 trigger:
 - platform: state
-  entity_id: switch.switch_xlns_pc
+  entity_id: switch.xlns_pc
   from: 'off'
   to: 'on'
 

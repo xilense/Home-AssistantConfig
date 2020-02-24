@@ -1,21 +1,24 @@
-alias: "Telegram Switch XLNS-PC Toggle"
+alias: "Telegram Switch XLNS-PC"
 
 trigger:
 - platform: event
   event_type: telegram_callback
   event_data:
-    data: '/xlns_pc_toggle'
+    data: '/xlns_pc'
 
 action:
-- service: homeassistant.toggle
-  entity_id: switch.switch_xlns_pc
 - service: telegram_bot.delete_message
   data_template:
     message_id: '{{ trigger.event.data.message.message_id }}'
     chat_id: '{{ trigger.event.data.user_id }}'
 - service: telegram_bot.send_message
   data_template:
-    message: "{{'\U000026A1'}}OK, Switching *XLNS-PC*"
+    message: "{{'\U000026A1'}}*XLNS-PC* currently {{ states('switch.xlns_pc') }}"
+    target: '{{ trigger.event.data.user_id }}'
+    disable_notification: true
+- service: telegram_bot.send_message
+  data_template:
+    message: "{{'\U000026A1'}}*XLNS-PC* command"
     target: '{{ trigger.event.data.user_id }}'
     disable_notification: true
     inline_keyboard:
