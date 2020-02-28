@@ -289,16 +289,33 @@ views:
           - entity: group.automation
           - entity: group.automation_telegram
 #----------------------------------------------------------------------------------------------------#
-      - type: entities
-        title: Automation
-        show_header_toggle: false
-        entities:
-          - entity: automation.routine_good_morning
-          - entity: automation.alarm
-          - entity: input_datetime.good_morning
-          - entity: automation.switch_timer
-          - entity: input_datetime.switch_timer
-          - entity: input_select.switch_timer
+      - type: vertical-stack
+        cards:
+#----------------------------------------------------------------------------------------------------#
+          - type: entities
+            title: Automation
+            show_header_toggle: false
+            entities:
+              - entity: automation.routine_good_morning
+              - entity: automation.alarm
+              - entity: input_datetime.good_morning
+#----------------------------------------------------------------------------------------------------#
+          - type: horizontal-stack
+            cards:
+#----------------------------------------------------------------------------------------------------#
+              - type: entities
+                show_header_toggle: false
+                entities:
+                  - entity: automation.switch_timer
+                  - entity: input_datetime.switch_timer
+                  - entity: input_select.switch_timer
+#----------------------------------------------------------------------------------------------------#
+              - type: entities
+                show_header_toggle: false
+                entities:
+                  - entity: automation.switch_timer_2
+                  - entity: input_datetime.switch_timer_2
+                  - entity: input_select.switch_timer_2
 #----------------------------------------------------------------------------------------------------#
       - type: vertical-stack
         cards:

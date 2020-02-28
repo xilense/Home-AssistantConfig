@@ -24,9 +24,6 @@ automation.current_light_theme:
 automation.current_ui_theme:
   icon: mdi:palette
 
-automation.switch_timer:
-  icon: mdi:alarm
-
 # PERSON #######################################################################
 
 person.joko:

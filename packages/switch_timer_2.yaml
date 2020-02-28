@@ -1,0 +1,40 @@
+homeassistant:
+  customize:
+    automation.switch_timer_2:
+      icon: mdi:alarm
+
+input_datetime:
+  switch_timer_2:
+    name: "Switch Timer #2"
+    has_date: false
+    has_time: true
+
+input_select:
+  switch_timer_2:
+    name: 'Switch Timer #2'
+    # icon: format-list-bulleted-square
+    options:
+      - Speaker
+      - Switch Portable
+      - XLNS-PC
+
+automation:
+- alias: "Switch Timer #2"
+  
+  trigger:
+  - platform: template
+    value_template: '{{ states.sensor.time.state  == (states.input_datetime.switch_timer_2.attributes.timestamp | int | timestamp_custom("%H:%M", False))  }}'
+  
+  action:
+  - service: switch.turn_off
+    data_template:
+      entity_id: >
+          {% if is_state("input_select.switch_timer_2", "Speaker") %}
+            switch.speaker
+          {%-elif is_state("input_select.switch_timer_2", "Switch Portable") %}
+            switch.switch_portable
+          {%-elif is_state("input_select.switch_timer_2", "XLNS-PC") %}
+            switch.xlns_pc
+          {% else %}
+            none
+          {% endif %}
