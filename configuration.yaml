@@ -33,9 +33,18 @@ homeassistant:
         - !secret xlns_pc_ip
 #        - 192.168.1.0/24
 
+default_config:
+
+lovelace:
+  mode: yaml
+
 # hacs
 browser_mod:
-breaking_changes:
+  devices:
+    c986fbdb_e18db990:
+      name: browser_xlns_pc
+    ac02b632_280e8b9f:
+      name: browser_z4
 
 panel_iframe:
   tasmoadmin:
@@ -46,10 +55,6 @@ panel_iframe:
     title: 'IDE'
     icon: mdi:code-braces
     url: http://192.168.1.3:8321
-#  pihole:
-#    title: 'Pi-hole'
-#    icon: mdi:block-helper
-#    url: http://192.168.1.3:4865
 
 mqtt:
   broker: core-mosquitto
@@ -69,7 +74,7 @@ notify:
   - name: 'Pushbullet'
     platform: pushbullet
     api_key: !secret pushbullet_api
-  - name: Telegram
+  - name: 'Telegram'
     platform: telegram
     chat_id: !secret xlns_telegram_id
 
@@ -107,6 +112,9 @@ device_tracker:
   - platform: google_maps
     max_gps_accuracy: 100
     username: !secret google_maps_username
+    consider_home: 300
+#  - platform: bluetooth_tracker
+#    consider_home: 300
 
 google:
   client_id: !secret google_cal_id
@@ -151,21 +159,20 @@ system_health:
 
 zone: !include zone.yaml
 person: !include person.yaml
-switch: !include switch.yaml
 logbook: !include logbook.yaml
 history: !include history.yaml
 recorder: !include recorder.yaml
 
 scene: !include_dir_list scene
 sensor: !include_dir_list sensor
+switch: !include_dir_list switch
 automation: !include_dir_list automation
 media_player: !include_dir_list media_player
 
 group: !include_dir_named group
 script: !include_dir_named script
+input_select: !include_dir_named input_select
+input_boolean: !include_dir_named input_boolean
+input_datetime: !include_dir_named input_datetime
 
 binary_sensor: !include_dir_merge_list binary_sensor
-
-input_select: !include_dir_merge_named input_select
-input_boolean: !include_dir_merge_named input_boolean
-input_datetime: !include_dir_merge_named input_datetime

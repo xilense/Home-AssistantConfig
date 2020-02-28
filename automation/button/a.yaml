@@ -15,4 +15,4 @@ action:
     entity_id: input_select.current_light_theme
     option: 'Away'
 - service: input_boolean.turn_on
-  entity_id: input_boolean.text_notifications
+  entity_id: input_boolean.text_notif

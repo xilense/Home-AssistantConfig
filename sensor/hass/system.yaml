@@ -9,4 +9,3 @@ resources:
   - type: memory_use_percent
   - type: ipv4_address
     arg: eth0
-  - type: last_boot

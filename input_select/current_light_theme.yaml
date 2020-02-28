@@ -1,11 +1,10 @@
-current_light_theme:
-  name: 'Current Light Theme'
-  options:
-    - Day
-    - Night
-    - Movies
-    - Sleep
-    - Away
-    - Custom
-  initial: Custom
-  icon: mdi:palette
+name: 'Current Light Theme'
+icon: mdi:palette
+initial: Custom
+options:
+  - Day
+  - Night
+  - Movies
+  - Sleep
+  - Away
+  - Custom

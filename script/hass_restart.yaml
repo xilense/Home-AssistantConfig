@@ -1,0 +1,7 @@
+alias: 'Restart Home Assistant'
+sequence:
+  - service: browser_mod.toast
+    data:
+      duration: 16000
+      message: 'Restart Home Assistant...'
+  - service: homeassistant.restart

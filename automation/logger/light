@@ -4,7 +4,7 @@ initial_state: 'on'
 trigger:
   - platform: state
     entity_id:
-      - light.gateway_light_7c49eb1c097b
+      - light.mi_gateway
       - light.main_light
 
 condition:

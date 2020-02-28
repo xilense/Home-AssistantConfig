@@ -3,7 +3,7 @@ entities:
   light.main_light:
     state: off
     transition: 15
-  light.gateway_light_7c49eb1c097b:
+  light.mi_gateway:
     state: off
   switch.switch_portable:
     state: off

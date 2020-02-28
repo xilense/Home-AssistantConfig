@@ -1,0 +1,6 @@
+name: 'Current UI Theme'
+icon: mdi:palette
+initial: light
+options:
+  - light
+  - dark

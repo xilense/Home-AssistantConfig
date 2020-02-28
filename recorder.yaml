@@ -12,7 +12,6 @@ exclude:
     - sensor.latest_version
     - sensor.installed_version
     - sensor.ipv4_address_eth0
-    - sensor.last_boot
     - sensor.processor_use
     - sensor.time
     - sensor.uptime

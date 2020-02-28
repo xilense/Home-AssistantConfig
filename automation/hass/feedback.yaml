@@ -19,4 +19,4 @@ action:
 - delay: 00:00:00.5
 - service: light.turn_off
   data:
-    entity_id: light.gateway_light_7c49eb1c097b
+    entity_id: light.mi_gateway

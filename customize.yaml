@@ -24,10 +24,10 @@ automation.current_light_theme:
 automation.current_ui_theme:
   icon: mdi:palette
 
-automation.portable_switch_timer:
+automation.switch_timer:
   icon: mdi:alarm
 
-# SENSOR #######################################################################
+# PERSON #######################################################################
 
 person.joko:
   entity_picture: '/local/joko.png'
@@ -62,6 +62,34 @@ sensor.latest_version:
 sensor.home_assistant_v2_db:
   friendly_name: 'Database'
   icon: mdi:database
+
+sensor.radarr_movies:
+  friendly_name: 'Movies'
+  icon: mdi:movie
+
+sensor.radarr_upcoming:
+  friendly_name: 'Movies Upcoming'
+  icon: mdi:movie
+
+sensor.recently_added:
+  friendly_name: 'Recently Added'
+  icon: mdi:youtube-tv
+
+sensor.sonarr_disk_space:
+  friendly_name: 'Disk Space'
+
+sensor.sonarr_series:
+  friendly_name: 'Series'
+  icon: mdi:youtube-tv
+
+sensor.sonarr_upcoming:
+  friendly_name: 'Series Upcoming'
+  icon: mdi:youtube-tv
+
+sensor.sonarr_wanted:
+  friendly_name: 'Series Wanted'
+  icon: mdi:youtube-tv
+
 
 # LIGHT ########################################################################
 

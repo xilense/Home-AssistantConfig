@@ -1,9 +1,0 @@
-alias: "Portable Switch Timer"
-
-trigger:
-- platform: template
-  value_template: '{{ states.sensor.time.state  == (states.input_datetime.portable_switch_timer.attributes.timestamp | int | timestamp_custom("%H:%M", False))  }}'
-
-action:
-- service: switch.turn_off
-  entity_id: switch.switch_portable

@@ -1,0 +1,28 @@
+platform: template
+sensors:
+  day:
+    friendly_name: 'Day'
+    icon_template: mdi:calendar
+    entity_id: sensor.date
+    value_template: >
+      {% set days = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"] %}
+      {{ days[now().weekday()] }}
+
+  date_text:
+    friendly_name: 'Date text'
+    icon_template: mdi:calendar
+    value_template: >
+      {% set months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", 
+      "Juli", "Agustus", "September", "Oktober", "November", "Desember"] %}
+      {{ strptime(states('sensor.date'), '%Y-%m-%d').day }}
+      {{ months[now().month-1] }}
+
+  hass_version:
+    friendly_name: 'Updated version'
+    icon_template: mdi:home-assistant
+    value_template: >-
+      {% if states('sensor.installed_version') == states('sensor.latest_version') %}
+        Yes
+      {% else %}
+        No - {{ states('sensor.latest_version') }}
+      {% endif %}

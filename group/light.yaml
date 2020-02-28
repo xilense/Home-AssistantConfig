@@ -1,3 +1,4 @@
 name: 'Light'
 entities:
-  - light.gateway_light_7c49eb1c097b
+  - light.main_light
+  - light.mi_gateway

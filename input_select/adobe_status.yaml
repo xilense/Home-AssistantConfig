@@ -1,8 +1,7 @@
-adobe_status:
-  name: 'Adobe Status'
-  options:
-    - Standby
-    - Home
-    - Away
-  initial: Standby
-  icon: mdi:shield-home
+name: 'Adobe Status'
+icon: mdi:shield-home
+initial: Standby
+options:
+  - Standby
+  - Home
+  - Away

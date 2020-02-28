@@ -1,9 +1,0 @@
-speech_notifications:
-  name: 'Speech Notifications'
-  icon: mdi:speaker-wireless
-  initial: on
-
-text_notifications:
-  name: 'Text Notifications'
-  icon: mdi:cellphone-wireless
-  initial: on

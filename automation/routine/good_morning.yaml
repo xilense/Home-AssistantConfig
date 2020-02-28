@@ -6,7 +6,7 @@ trigger:
   to: 'on'
   from: 'off'
 - platform: template
-  value_template: '{{ states.sensor.time.state  == (states.input_datetime.good_morning_time.attributes.timestamp | int | timestamp_custom("%H:%M", False))  }}'
+  value_template: '{{ states.sensor.time.state  == (states.input_datetime.good_morning.attributes.timestamp | int | timestamp_custom("%H:%M", False))  }}'
 
 action:
 - service: input_select.select_option

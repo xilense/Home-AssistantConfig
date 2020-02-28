@@ -6,7 +6,7 @@ trigger:
   to: 'on'
   from: 'off'
 - platform: template
-  value_template: '{{ states.sensor.time.state  == (states.input_datetime.good_morning_time.attributes.timestamp | int | timestamp_custom("%H:%M", False))  }}'
+  value_template: '{{ states.sensor.time.state  == (states.input_datetime.good_morning.attributes.timestamp | int | timestamp_custom("%H:%M", False))  }}'
 
 condition:
 - condition: state
@@ -21,6 +21,6 @@ action:
     ringtone_vol: 27
 - service: light.turn_on
   data:
-    entity_id: light.gateway_light_7c49eb1c097b
+    entity_id: light.mi_gateway
     brightness: 35
     rgb_color: [255,70,70]
