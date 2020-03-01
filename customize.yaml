@@ -98,7 +98,7 @@ light.yeelight_rgb_7c49eb158f0a:
 sensor.steam_76561198066698938:
   friendly_name: 'XLNS Steam'
 
-# STEAM ########################################################################
+# SWITCH #######################################################################
 
 switch.xlns_pc:
   icon: mdi:monitor

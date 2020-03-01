@@ -1,4 +1,4 @@
-alias: 'Hass Feedback'
+alias: 'Hass - Feedback'
 
 trigger:
 - platform: state

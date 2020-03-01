@@ -406,7 +406,7 @@ views:
             show_header_toggle: false
             entities:
               - entity: sensor.installed_version
-              - entity: sensor.hass_version
+              - entity: sensor.latest_version_text
               - entity: sensor.home_assistant_v2_db
               - entity: sensor.memory_free
               - entity: sensor.disk_free_home

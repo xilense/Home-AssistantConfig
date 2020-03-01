@@ -39,13 +39,13 @@ default_config:
 lovelace:
   mode: yaml
 
-# hacs
 browser_mod:
+  prefix: "browser_"
   devices:
     c986fbdb_e18db990:
-      name: browser_xlns_pc
+      name: xlns_pc
     ac02b632_280e8b9f:
-      name: browser_z4
+      name: z4
 
 panel_iframe:
   tasmoadmin:
@@ -153,13 +153,13 @@ map:
 sun:
 cloud:
 config:
+person:
 updater:
 wake_on_lan:
 conversation:
 system_health:
 
 zone: !include zone.yaml
-person: !include person.yaml
 logbook: !include logbook.yaml
 history: !include history.yaml
 recorder: !include recorder.yaml

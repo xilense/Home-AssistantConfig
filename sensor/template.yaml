@@ -17,7 +17,7 @@ sensors:
       {{ strptime(states('sensor.date'), '%Y-%m-%d').day }}
       {{ months[now().month-1] }}
 
-  hass_version:
+  latest_version_text:
     friendly_name: 'Updated version'
     icon_template: mdi:home-assistant
     value_template: >-

@@ -10,6 +10,7 @@ exclude:
     - binary_sensor.updater
     
     - sensor.latest_version
+    - sensor.latest_version_text
     - sensor.installed_version
     - sensor.ipv4_address_eth0
     - sensor.processor_use
@@ -20,14 +21,11 @@ exclude:
     
     - switch.adguard_filtering
     - switch.adguard_parental_control
-    - switch.adguard_protection
-    - switch.adguard_query_log
-    - switch.adguard_safe_browsing
-    - switch.adguard_safe_search
-    
+
   domains:
     - automation
     - weblink
     - updater
     - persistent_notification
     - calendar
+    - script
