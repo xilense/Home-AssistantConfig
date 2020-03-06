@@ -11,6 +11,7 @@ tts
 download
 deps
 www/plex
+__pycache__
 
 # these YAML files are ignored
 .uuid
@@ -31,3 +32,4 @@ google_travel_time.yaml
 *.conf
 *.key
 *.crt
+*.pyc
