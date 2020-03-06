@@ -23,6 +23,8 @@ sensors:
     value_template: >-
       {% if states('sensor.installed_version') == states('sensor.latest_version') %}
         Yes
+      {% elif states('sensor.latest_version') == 'unknown' %}
+        Checking...
       {% else %}
         No - {{ states('sensor.latest_version') }}
       {% endif %}
