@@ -1,0 +1,12 @@
+alias: 'Eventghost'
+initial_state: 'on'
+
+trigger:
+- platform: mqtt
+  topic: cmnd/hass/#
+
+action:
+- service_template: >
+    {{ trigger.topic.split('/')[-1] }}
+  data_template:
+    entity_id: '{{ trigger.payload }}'
