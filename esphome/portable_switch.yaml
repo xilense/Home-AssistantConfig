@@ -1,0 +1,42 @@
+esphome:
+  name: portable_switch
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  ap:
+    ssid: "Switch Portable Fallback"
+    password: !secret wifi_password
+
+captive_portal:
+
+api:
+
+logger:
+
+ota:
+
+binary_sensor:
+  - platform: gpio
+    internal: true
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "Switch Portable Button GPIO0"
+    on_press:
+      - switch.toggle: portable_switch_relay
+
+switch:
+  - platform: gpio
+    name: "Switch Portable"
+    pin: GPIO12
+    id: 'portable_switch_relay'
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: yes
