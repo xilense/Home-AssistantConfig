@@ -26,7 +26,6 @@ exclude:
     - switch.adguard_parental_control
 
   domains:
-    - automation
     - weblink
     - updater
     - persistent_notification

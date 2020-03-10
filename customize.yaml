@@ -87,12 +87,6 @@ sensor.sonarr_wanted:
   friendly_name: 'Series Wanted'
   icon: mdi:youtube-tv
 
-
-# LIGHT ########################################################################
-
-light.yeelight_rgb_7c49eb158f0a:
-  friendly_name: 'Main Light'
-
 # STEAM ########################################################################
 
 sensor.steam_76561198066698938:
