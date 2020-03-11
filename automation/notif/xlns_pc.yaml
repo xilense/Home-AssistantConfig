@@ -1,0 +1,10 @@
+alias: 'Notif - XLNS-PC'
+
+trigger:
+- platform: state
+  entity_id: switch.xlns_pc
+
+action:
+- service: notify.telegram
+  data:
+    message: "{{'\U0001F5A5'}}{{'\U000026A1'}} *XLNS-PC* turned {{ states('switch.xlns_pc') }}"

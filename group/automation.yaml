@@ -19,8 +19,7 @@ entities:
   - automation.notif_download_failed
   - automation.notif_hass_started
   - automation.notif_update_available
-  - automation.notif_xlns_pc_off
-  - automation.notif_xlns_pc_on
+  - automation.notif_xlns_pc
   - automation.portable_switch_timer
   - automation.routine_good_morning
   - automation.routine_good_night
