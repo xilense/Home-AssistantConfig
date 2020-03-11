@@ -24,6 +24,12 @@ automation.current_light_theme:
 automation.current_ui_theme:
   icon: mdi:palette
 
+automation.eventghost:
+  icon: mdi:play
+
+automation.xlns_pc_snooze:
+  icon: mdi:monitor
+
 # PERSON #######################################################################
 
 person.joko:
