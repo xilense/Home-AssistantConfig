@@ -3,8 +3,8 @@ alias: 'XLNS-PC Snooze'
 trigger:
 - platform: state
   entity_id: sensor.steam_76561198066698938
-  to: 'snooze'
-  for: '00:01:00'
+  to: 'away'
+  for: '01:00:00'
 
 action:
 - service: switch.turn_off
