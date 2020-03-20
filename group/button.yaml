@@ -1,6 +1,0 @@
-name: 'Button'
-entities:
-  - binary_sensor.button_a
-  - binary_sensor.button_b
-  - binary_sensor.button_c
-  - binary_sensor.button_d

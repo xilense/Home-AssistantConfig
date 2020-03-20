@@ -1,9 +1,8 @@
 alias: 'Button C'
 
 trigger:
-- platform: state
-  entity_id: binary_sensor.button_c
-  to: 'on'
+- platform: template
+  value_template: "{{ is_state('sensor.rf_command', 'C') }}"
 
 action:
 - service: homeassistant.toggle

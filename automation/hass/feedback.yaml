@@ -1,10 +1,17 @@
 alias: 'Hass - Feedback'
 
 trigger:
-- platform: state
-  entity_id: group.button
-  to: 'on'
-
+- platform: template
+  value_template: >
+    {% if states('sensor.rf_command') == 'A' %}
+      True
+    {% elif states('sensor.rf_command') == 'B' %}
+      True
+    {% elif states('sensor.rf_command') == 'C' %}
+      True
+    {% elif states('sensor.rf_command') == 'D' %}
+      True
+    {% endif %}
 action:
 - service: xiaomi_aqara.play_ringtone
   data:
@@ -13,7 +20,7 @@ action:
     ringtone_vol: 50
 - service: light.turn_on
   data:
-    entity_id: light.gateway_light_7c49eb1c097b
+    entity_id: light.mi_gateway
     brightness: 91
     rgb_color: [255,36,36]
 - delay: 00:00:00.5

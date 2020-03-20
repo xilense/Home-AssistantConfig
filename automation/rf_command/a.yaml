@@ -1,9 +1,8 @@
 alias: 'Button A'
 
 trigger:
-- platform: state
-  entity_id: binary_sensor.button_a
-  to: 'on'
+- platform: template
+  value_template: "{{ is_state('sensor.rf_command', 'A') }}"
 
 action:
 - service: input_select.select_option

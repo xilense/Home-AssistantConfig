@@ -1,0 +1,24 @@
+platform: mqtt
+name: 'RF Command'
+state_topic: "tele/RF_Bridge/RESULT"
+value_template: >-
+  {% if value_json.RfReceived.Data == '67A622' %}
+    A
+  {% elif value_json.RfReceived.Data == 'C545C0' %}
+    B
+  {% elif value_json.RfReceived.Data == '67A621' %}
+    C
+  {% elif value_json.RfReceived.Data == '67A624' %}
+    D
+  {% elif value_json.RfReceived.Data == 'A43429' %}
+    Motion
+  {% else %}
+    {{value_json.RfReceived.Data}}
+  {% endif %}
+expire_after: 1
+
+# 67A622 = A
+# C545C0 = B
+# 67A621 = C
+# 67A624 = D
+# A43429 = Motion
