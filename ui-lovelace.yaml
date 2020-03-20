@@ -73,6 +73,8 @@ views:
           show_header_toggle: false
           entities:
             - entity: sensor.joko_to_home
+            - entity: device_tracker.google_maps_101676721020210595319
+              secondary_info: last-changed
             - entity: device_tracker.z4
               secondary_info: last-changed
             - entity: sensor.steam_76561198066698938
@@ -187,6 +189,8 @@ views:
           show_header_toggle: false
           entities:
             - entity: sensor.joko_to_home
+            - entity: device_tracker.google_maps_101676721020210595319
+              secondary_info: last-changed
             - entity: device_tracker.z4
               secondary_info: last-changed
             - entity: sensor.steam_76561198066698938

@@ -32,7 +32,6 @@ homeassistant:
       trusted_networks:
         - !secret z4_ip
         - !secret xlns_pc_ip
-#        - 192.168.1.0/24
 
 default_config:
 
@@ -68,8 +67,7 @@ ifttt:
 telegram_bot:
   - platform: polling
     api_key: !secret telegram_bot_api
-    allowed_chat_ids:
-      !include telegram_chat_id.yaml
+    allowed_chat_ids: !include telegram_chat_id.yaml
 
 notify:
   - name: 'Pushbullet'
@@ -169,11 +167,10 @@ sensor: !include_dir_list sensor
 switch: !include_dir_list switch
 automation: !include_dir_list automation
 media_player: !include_dir_list media_player
+binary_sensor: !include_dir_list binary_sensor
 
 group: !include_dir_named group
 script: !include_dir_named script
 input_select: !include_dir_named input_select
 input_boolean: !include_dir_named input_boolean
 input_datetime: !include_dir_named input_datetime
-
-binary_sensor: !include_dir_merge_list binary_sensor

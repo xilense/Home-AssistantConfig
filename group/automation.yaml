@@ -10,6 +10,7 @@ entities:
   - automation.button_d
   - automation.current_light_theme
   - automation.current_ui_theme
+  - automation.eventghost
   - automation.gaming_mode
   - automation.hass_auto_backup
   - automation.hass_auto_restart
@@ -20,6 +21,8 @@ entities:
   - automation.notif_hass_started
   - automation.notif_update_available
   - automation.notif_xlns_pc
-  - automation.portable_switch_timer
   - automation.routine_good_morning
   - automation.routine_good_night
+  - automation.switch_timer
+  - automation.switch_timer_2
+  - automation.xlns_pc_snooze

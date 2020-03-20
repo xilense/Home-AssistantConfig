@@ -22,9 +22,11 @@ exclude:
     - input_select.switch_timer
     - input_select.switch_timer_2
     
+    - binary_sensor.remote_ui
+    - binary_sensor.updater
+
   domains:
     - calendar
     - automation
     - input_datetime
     - input_boolean
-    - binary_sensor
