@@ -11,7 +11,11 @@ value_template: >-
   {% elif value_json.RfReceived.Data == '67A624' %}
     D
   {% elif value_json.RfReceived.Data == 'A43429' %}
-    Motion
+    Motion Detected
+  {% elif value_json.RfReceived.Data == '0DD40E' %}
+    Door Open
+  {% elif value_json.RfReceived.Data == '0DD407' %}
+    Door Closed
   {% else %}
     {{value_json.RfReceived.Data}}
   {% endif %}
@@ -21,4 +25,8 @@ expire_after: 1
 # C545C0 = B
 # 67A621 = C
 # 67A624 = D
+
 # A43429 = Motion
+
+# 0DD40E = Door Oopen
+# 0DD407 = Door Closed

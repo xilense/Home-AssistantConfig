@@ -133,13 +133,12 @@ views:
           - entity: light.mi_gateway
           - entity: light.main_light
 #----------------------------------------------------------------------------------------------------#
-      # - type: entities
-      #   title: Routine Trigger
-      #   show_header_toggle: false
-      #   entities:
-      #     - entity: input_boolean.good_morning
-      #     - entity: input_boolean.good_night
-      #     - entity: group.button
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - entity: binary_sensor.motion
+          - entity: binary_sensor.door
+          - entity: sensor.rf_command
 ######################################################################################################
 # FAMILY
 ######################################################################################################
@@ -358,6 +357,7 @@ views:
           - entity: automation.hass_auto_restart
 #----------------------------------------------------------------------------------------------------#
       - type: entities
+        show_header_toggle: false
         entities:
           - entity: switch.adguard_filtering
           - entity: switch.adguard_parental_control

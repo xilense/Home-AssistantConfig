@@ -93,6 +93,9 @@ sensor.sonarr_wanted:
   friendly_name: 'Series Wanted'
   icon: mdi:youtube-tv
 
+sensor.rf_command:
+  icon: mdi:remote
+
 # STEAM ########################################################################
 
 sensor.steam_76561198066698938:
