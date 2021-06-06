@@ -2,32 +2,19 @@ alias: 'Adobe Home'
 initial_state: 'on'
 
 trigger:
-- platform: time_pattern
-  minutes: '/10'
-# coming home trigger
+- platform: homeassistant
+  event: start
 - platform: state
   entity_id: group.family
+  from: 'not_home'
   to: 'home'
-  for: '00:00:03'
 
 condition:
 - condition: state
   entity_id: group.family
   state: 'home'
-- condition: template
-  value_template: "{{ states.input_select.adobe_status.state != 'Home' }}"
-- condition: state
-  entity_id: input_boolean.guest_mode
-  state: 'off'
 
 action:
-- service: input_select.select_option
-  data:
-    entity_id: input_select.adobe_status
-    option: 'Home'
-# coming home action
-- condition: template
-  value_template: "{{ trigger.entity_id == 'group.family' }}"
 - service: input_select.select_option
   data:
     entity_id: input_select.current_light_theme

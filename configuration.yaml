@@ -1,10 +1,10 @@
 homeassistant:
-  name: 'Home'
-  latitude: !secret home_latitude
-  longitude: !secret home_longitude
-  elevation: !secret home_elevation
-  unit_system: metric
-  time_zone: Asia/Jakarta
+  # name: 'Home'
+  # latitude: !secret home_latitude
+  # longitude: !secret home_longitude
+  # elevation: !secret home_elevation
+  # unit_system: metric
+  # time_zone: Asia/Jakarta
   whitelist_external_dirs:
     - '/config/'
   packages: !include_dir_named packages
@@ -26,6 +26,9 @@ homeassistant:
     'automation.hass_*':
       icon: mdi:home-assistant
       initial_state: 'on'
+  media_dirs:
+    media: /media
+    # recording: /mnt/recordings
   auth_providers:
     - type: homeassistant
     - type: trusted_networks
@@ -36,22 +39,29 @@ homeassistant:
 default_config:
 
 lovelace:
-  mode: yaml
+  mode: storage
   resources:
-    - url: /community_plugin/custom-header/custom-header.js
+    - url: /hacsfiles/custom-header/custom-header.js
       type: module
-    - url: /community_plugin/light-entity-card/light-entity-card.js
+    - url: /hacsfiles/light-entity-card/light-entity-card.js
       type: js
-    - url: /community_plugin/upcoming-media-card/upcoming-media-card.js
+    - url: /hacsfiles/upcoming-media-card/upcoming-media-card.js
       type: js
+  # dashboards:
+  #   lovelace-yaml:
+  #     mode: yaml
+  #     title: YAML
+  #     icon: mdi:script
+  #     show_in_sidebar: true
+  #     filename: ui-lovelace.yaml
 
-browser_mod:
-  prefix: "browser_"
-  devices:
-    c986fbdb_e18db990:
-      name: xlns_pc
-    ac02b632_280e8b9f:
-      name: z4
+# browser_mod:
+#   prefix: "browser_"
+#   devices:
+#     a0812e89_52cec6c4:
+#       name: "Browser XLNS-PC"
+#     ac02b632_280e8b9f:
+#       name: "Browser Z4"
 
 panel_iframe:
   tasmoadmin:
@@ -85,8 +95,8 @@ notify:
     chat_id: !secret xlns_telegram_id
 
 discovery:
-  ignore:
-    - igd
+  # ignore:
+  #   - igd
 
 xiaomi_aqara:
   discovery_retry: 10
@@ -95,19 +105,19 @@ xiaomi_aqara:
       mac: !secret aqara_mac
       host: 192.168.1.24
 
-yeelight:
-  devices:
-    192.168.1.22:
-      name: 'Main Light'
-      model: color1
-  custom_effects:
-    - name: 'Fire Flicker'
-      flow_params:
-        count: 0
-        transitions:
-          - TemperatureTransition: [1900, 1000, 80]
-          - TemperatureTransition: [1900, 2000, 60]
-          - SleepTransition:       [1000]
+# yeelight:
+#   devices:
+#     192.168.1.22:
+#       name: 'Main Light'
+#       model: color1
+#   custom_effects:
+#     - name: 'Fire Flicker'
+#       flow_params:
+#         count: 0
+#         transitions:
+#           - TemperatureTransition: [1900, 1000, 80]
+#           - TemperatureTransition: [1900, 2000, 60]
+#           - SleepTransition:       [1000]
 
 #camera:
 #  - platform: generic
@@ -153,6 +163,7 @@ tts:
 
 frontend:
   themes: !include_dir_merge_named themes
+  javascript_version: latest
 
 map:
 sun:
@@ -164,7 +175,7 @@ wake_on_lan:
 conversation:
 system_health:
 
-zone: !include zone.yaml
+zone: #!include zone.yaml
 logbook: !include logbook.yaml
 history: !include history.yaml
 recorder: !include recorder.yaml

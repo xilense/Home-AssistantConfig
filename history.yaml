@@ -3,15 +3,11 @@ exclude:
     - sensor.day
     - sensor.plex_xlns_pc
     - sensor.disk_free_home
-    - sensor.disk_use_percent_home
-    - sensor.memory_use_percent
     - sensor.memory_free
     - sensor.joko_to_home
     - sensor.dark_sky_summary
     - sensor.dark_sky_summary_1d
     
-    - sensor.adguard_average_processing_speed
-    - sensor.adguard_dns_queries
     - sensor.adguard_dns_queries_blocked
     - sensor.adguard_dns_queries_blocked_ratio
     - sensor.adguard_parental_control_blocked

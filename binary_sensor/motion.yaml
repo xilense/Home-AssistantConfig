@@ -5,4 +5,4 @@ state_topic: "tele/RF_Bridge/RESULT"
 value_template: '{{value_json.RfReceived.Data}}'
 payload_on: 'A43429'
 payload_off: '67A622off'
-off_delay: 1
+off_delay: 3

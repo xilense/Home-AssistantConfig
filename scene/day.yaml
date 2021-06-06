@@ -1,7 +1,7 @@
 name: 'Day'
 entities:
-  light.main_light:
+  light.yeelight:
     state: on
     brightness: 255
     color_temp: 153
-    transition: 15
+    # transition: 15

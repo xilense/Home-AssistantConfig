@@ -1,0 +1,17 @@
+alias: 'Yeelight Auto-Off'
+initial_state: 'on'
+
+trigger:
+- platform: state
+  entity_id: binary_sensor.motion
+  to: 'off'
+  for: "00:15:00"
+
+condition:
+- condition: state
+  entity_id: light.yeelight
+  state: 'on'
+
+action:
+- service: light.turn_off
+  entity_id: light.yeelight

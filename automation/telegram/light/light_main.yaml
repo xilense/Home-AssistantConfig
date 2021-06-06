@@ -13,7 +13,7 @@ action:
     chat_id: '{{ trigger.event.data.user_id }}'
 - service: telegram_bot.send_message
   data_template:
-    message: "*Main Light* currently {{ states('light.main_light') }}
+    message: "*Main Light* currently {{ states('light.yeelight') }}
 
 {{'\U0001F4A1'}} *Main Light Command*"
     target: '{{ trigger.event.data.user_id }}'

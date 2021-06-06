@@ -16,6 +16,7 @@ entities:
   - automation.hass_auto_restart
   - automation.hass_feedback
   - automation.hass_startup
+  - automation.notif_corona
   - automation.notif_disk_almost_full
   - automation.notif_download_failed
   - automation.notif_hass_started

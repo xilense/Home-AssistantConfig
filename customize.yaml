@@ -1,5 +1,14 @@
 # AUTOMATION ###################################################################
 
+automation.xlns_pc_volume_control:
+  icon: mdi:volume-high
+
+automation.yeelight_auto_off:
+  icon: mdi:lightbulb-off
+
+automation.yeelight_auto_on:
+  icon: mdi:lightbulb-on
+
 automation.routine_good_morning:
   icon: mdi:weather-sunny
 
@@ -18,6 +27,9 @@ automation.adobe_home:
 automation.adobe_away:
   icon: mdi:home-lock
 
+automation.adobe_status_updater:
+  icon: mdi:shield-home
+
 automation.current_light_theme:
   icon: mdi:palette
 
@@ -27,8 +39,14 @@ automation.current_ui_theme:
 automation.eventghost:
   icon: mdi:play
 
+automation.intruder_alert:
+  icon: mdi:home-alert
+
 automation.xlns_pc_snooze:
   icon: mdi:monitor
+
+automation.waterpump_auto:
+  icon: mdi:water-pump
 
 # PERSON #######################################################################
 

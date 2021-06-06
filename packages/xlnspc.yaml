@@ -1,0 +1,333 @@
+homeassistant:
+  customize:
+
+automation:
+  - alias: 'XLNS-PC - Volume Control'
+    mode: restart
+    trigger:
+      - platform: state
+        entity_id: input_number.xlns_pc_volume
+    action:
+      - delay: '00:00:02'
+      - service: mqtt.publish
+        data:
+          topic: "pc/command/volume/set"
+          payload_template: "{{ states('input_number.xlns_pc_volume') }}"
+
+  - alias: 'XLNS-PC - Volume Control Updater'
+    mode: restart
+    trigger:
+      - platform: mqtt
+        topic: 'pc/state/volume/set'
+    action:
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.xlns_pc_volume
+          value: "{{ trigger.payload }}"
+
+input_number:
+  xlns_pc_volume:
+    name: XLNS-PC Volume
+    icon: mdi:volume-high
+    initial: 100
+    min: 0
+    max: 100
+    step: 1
+    unit_of_measurement: "%"
+
+binary_sensor:
+  # - platform: mqtt
+  #   name: "XLNS-PC - Connected"
+  #   state_topic: "pc/lwt"
+  #   value_template: "{{ value }}"
+  #   payload_on: "ON"
+  #   payload_off: "OFF"
+  #   device_class: "connectivity"
+  #   qos: 1
+
+  - platform: mqtt
+    name: "XLNS-PC - Activity"
+    state_topic: "pc/activity/state"
+    off_delay: 180
+    device_class: connectivity
+
+  # - platform: mqtt
+  #   name: "XLNS-PC - Media Playing"
+  #   state_topic: "pc/windows-monitor/stats/media/playing"
+  #   device_class: "sound"
+  #   value_template: "{{ value }}"
+  #   availability_topic: "pc/lwt"
+  #   payload_available: "ON"
+  #   payload_not_available: "OFF"
+  #   payload_on: "True"
+  #   payload_off: "False"
+  #   qos: 1
+
+  # - platform: mqtt
+  #   name: "XLNS-PC - Media Muted"
+  #   state_topic: "pc/windows-monitor/stats/media/muted"
+  #   device_class: "sound"
+  #   value_template: "{{ value }}"
+  #   availability_topic: "pc/lwt"
+  #   payload_available: "ON"
+  #   payload_not_available: "OFF"
+  #   payload_on: "True"
+  #   payload_off: "False"
+  #   qos: 1
+
+
+sensor:
+
+  # - platform: mqtt
+  #   name: "XLNS-PC - Idle Time"
+  #   state_topic: "pc/windows-monitor/stats/system/idle-time"
+  #   unit_of_measurement: 'seconds'
+  #   icon: mdi:timer-outline
+  #   value_template: "{{ value }}"
+  #   availability_topic: "pc/lwt"
+  #   payload_available: "ON"
+  #   payload_not_available: "OFF"
+  #   qos: 1
+
+  # - platform: mqtt
+  #   name: "XLNS-PC - Up Time"
+  #   state_topic: "pc/windows-monitor/stats/system/uptime"
+  #   # unit_of_measurement: 'seconds'
+  #   icon: mdi:timer-outline
+  #   value_template: "{{ value }}"
+  #   availability_topic: "pc/lwt"
+  #   payload_available: "ON"
+  #   payload_not_available: "OFF"
+  #   qos: 1
+
+  # - platform: mqtt
+  #   name: "XLNS-PC - Boot Time"
+  #   state_topic: "pc/windows-monitor/stats/system/boot-time"
+  #   icon: mdi:timer-outline
+  #   value_template: "{{ value }}"
+  #   availability_topic: "pc/lwt"
+  #   payload_available: "ON"
+  #   payload_not_available: "OFF"
+  #   qos: 1
+
+  - platform: mqtt
+    name: "XLNS-PC - CPU Usage"
+    state_topic: "pc/state/cpu/usage"
+    unit_of_measurement: '%'
+    icon: mdi:speedometer
+    value_template: "{{ value }}"
+    expire_after: 180
+    qos: 1
+
+  - platform: mqtt
+    name: "XLNS-PC - RAM Usage"
+    state_topic: "pc/state/memory/usage"
+    unit_of_measurement: '%'
+    icon: mdi:memory
+    value_template: "{{ value }}"
+    expire_after: 180
+    qos: 1
+
+  # - platform: mqtt
+  #   name: "XLNS-PC - RAM Available"
+  #   state_topic: "pc/windows-monitor/stats/memory/available"
+  #   unit_of_measurement: 'MB'
+  #   icon: mdi:memory
+  #   value_template: "{{ value }}"
+  #   availability_topic: "pc/lwt"
+  #   payload_available: "ON"
+  #   payload_not_available: "OFF"
+  #   qos: 1
+
+  # - platform: mqtt
+  #   name: "XLNS-PC - RAM Used"
+  #   state_topic: "pc/windows-monitor/stats/memory/used"
+  #   unit_of_measurement: 'MB'
+  #   icon: mdi:memory
+  #   value_template: "{{ value }}"
+  #   availability_topic: "pc/lwt"
+  #   payload_available: "ON"
+  #   payload_not_available: "OFF"
+  #   qos: 1
+
+  # - platform: mqtt
+  #   name: "XLNS-PC - RAM Total"
+  #   state_topic: "pc/windows-monitor/stats/memory/total"
+  #   unit_of_measurement: 'MB'
+  #   icon: mdi:memory
+  #   value_template: "{{ value }}"
+  #   availability_topic: "pc/lwt"
+  #   payload_available: "ON"
+  #   payload_not_available: "OFF"
+  #   qos: 1
+
+  - platform: mqtt
+    name: "XLNS-PC - HDD Usage (C)"
+    state_topic: "pc/state/hdd/c/usage"
+    unit_of_measurement: '%'
+    icon: mdi:chart-donut
+    value_template: "{{ value }}"
+    expire_after: 180
+    qos: 1
+
+  # - platform: mqtt
+  #   name: "XLNS-PC - HDD Total Size (C)"
+  #   state_topic: "pc/windows-monitor/stats/hard-drive/c/total-size"
+  #   unit_of_measurement: 'MB'
+  #   icon: mdi:harddisk
+  #   value_template: "{{ value }}"
+  #   availability_topic: "pc/lwt"
+  #   payload_available: "ON"
+  #   payload_not_available: "OFF"
+  #   qos: 1
+
+  # - platform: mqtt
+  #   name: "XLNS-PC - HDD Total Free Space (C)"
+  #   state_topic: "pc/windows-monitor/stats/hard-drive/c/total-free-space"
+  #   unit_of_measurement: 'MB'
+  #   icon: mdi:harddisk
+  #   value_template: "{{ value }}"
+  #   availability_topic: "pc/lwt"
+  #   payload_available: "ON"
+  #   payload_not_available: "OFF"
+  #   qos: 1
+
+  # - platform: mqtt
+  #   name: "XLNS-PC - HDD Free Space (C)"
+  #   state_topic: "pc/windows-monitor/stats/hard-drive/c/available-free-space"
+  #   unit_of_measurement: 'MB'
+  #   icon: mdi:harddisk
+  #   value_template: "{{ value }}"
+  #   availability_topic: "pc/lwt"
+  #   payload_available: "ON"
+  #   payload_not_available: "OFF"
+  #   qos: 1
+
+  # - platform: mqtt
+  #   name: "XLNS-PC - HDD Used Space (C)"
+  #   state_topic: "pc/windows-monitor/stats/hard-drive/c/used-space"
+  #   unit_of_measurement: 'MB'
+  #   icon: mdi:harddisk
+  #   value_template: "{{ value }}"
+  #   availability_topic: "pc/lwt"
+  #   payload_available: "ON"
+  #   payload_not_available: "OFF"
+  #   qos: 1
+
+  # - platform: mqtt
+  #   name: "XLNS-PC - Network IPv4"
+  #   state_topic: "pc/windows-monitor/stats/network/0/ipv4"
+  #   unit_of_measurement: ''
+  #   icon: mdi:lan
+  #   value_template: "{{ value }}"
+  #   availability_topic: "pc/lwt"
+  #   payload_available: "ON"
+  #   payload_not_available: "OFF"
+  #   qos: 1
+
+  # - platform: mqtt
+  #   name: "XLNS-PC - Network Speed"
+  #   state_topic: "pc/windows-monitor/stats/network/0/speed"
+  #   unit_of_measurement: 'Mbps'
+  #   icon: mdi:speedometer
+  #   value_template: "{{ value }}"
+  #   availability_topic: "pc/lwt"
+  #   payload_available: "ON"
+  #   payload_not_available: "OFF"
+  #   qos: 1
+
+  # - platform: mqtt
+  #   name: "XLNS-PC - Media Volume"
+  #   state_topic: "pc/windows-monitor/stats/media/volume"
+  #   unit_of_measurement: '%'
+  #   icon: mdi:speedometer
+  #   value_template: "{{ value }}"
+  #   availability_topic: "pc/lwt"
+  #   payload_available: "ON"
+  #   payload_not_available: "OFF"
+  #   qos: 1
+
+
+camera:
+  - platform: mqtt
+    name: "XLNS-PC - Display"
+    topic: "pc/state/display"
+
+
+script:
+  xlnspc_shutdown:
+    alias: "Shutdown"
+    icon: mdi:power
+    sequence:
+    - service: mqtt.publish
+      data:
+        topic: "pc/command/shutdown"
+        payload: ""
+
+  xlnspc_reboot:
+    alias: "Reboot"
+    icon: mdi:restart
+    sequence:
+    - service: mqtt.publish
+      data:
+        topic: "pc/command/reboot"
+        payload: ""
+
+  xlnspc_hibernate:
+    alias: "Hibernate"
+    icon: mdi:power-sleep
+    sequence:
+    - service: mqtt.publish
+      data:
+        topic: "pc/command/hibernate"
+        payload: ""
+
+  xlnspc_displays_on:
+    alias: "Display On"
+    icon: mdi:monitor-clean
+    sequence:
+    - service: mqtt.publish
+      data:
+        topic: "pc/command/displays/on"
+        payload: ""
+
+  xlnspc_displays_off:
+    alias: "Display Off"
+    icon: mdi:monitor-off
+    sequence:
+    - service: mqtt.publish
+      data:
+        topic: "pc/command/displays/off"
+        payload: ""
+
+  xlnspc_start_steam:
+    alias: "Start Steam"
+    icon: mdi:steam
+    sequence:
+    - service: mqtt.publish
+      data:
+        topic: "pc/command/steam/on"
+        payload: ""
+
+
+  # xlnspc_vol_max:
+  #   alias: "XLNS-PC - Vol Max"
+  #   sequence:
+  #   - service: mqtt.publish
+  #     data:
+  #       topic: "pc/commands/volume/set"
+  #       payload: 100
+
+switch:
+  - platform: mqtt
+    name: "XLNS-PC - Mute"
+    icon: mdi:volume-off
+    command_topic: "pc/command/volume/mute"
+    state_topic: "pc/state/volume/mute"
+
+light:
+  - platform: mqtt
+    name: "XLNS-PC - Display"
+    command_topic: "pc/command/display"
+    state_topic: "pc/state/display"
+

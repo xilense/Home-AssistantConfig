@@ -1,0 +1,7 @@
+platform: mqtt
+name: 'Lock'
+device_class: lock
+state_topic: "tele/RF_Bridge/RESULT"
+value_template: '{{value_json.RfReceived.Data}}'
+payload_on: '0DD407'
+payload_off: '0DD40E'

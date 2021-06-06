@@ -1,0 +1,2 @@
+platform: openhardwaremonitor
+host: !secret xlns_pc_ip

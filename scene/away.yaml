@@ -1,8 +1,8 @@
 name: 'Away'
 entities:
-  light.main_light:
+  light.yeelight:
     state: off
-    transition: 15
+    # transition: 15
   light.mi_gateway:
     state: off
   switch.switch_portable:

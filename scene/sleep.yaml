@@ -1,7 +1,7 @@
 name: 'Sleep'
 entities:
-  light.main_light:
+  light.yeelight:
     state: on
     brightness: 3
     color_temp: 588
-    transition: 15
+    # transition: 15

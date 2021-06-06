@@ -5,14 +5,11 @@ exclude:
     - sensor.uptime
     - sensor.dark_sky_summary
     - sensor.dark_sky_summary_1d
-    
+    - sensor.rf_command
+
     - switch.adguard_filtering
     - switch.adguard_parental_control
-    - switch.adguard_protection
-    - switch.adguard_query_log
-    - switch.adguard_safe_browsing
-    - switch.adguard_safe_search
-    
+
   domains:
     - group
     - device_tracker

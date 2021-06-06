@@ -1,9 +1,11 @@
-purge_interval: 1
 purge_keep_days: 7
 exclude:
   entities:
     - binary_sensor.remote_ui
     - binary_sensor.updater
+
+    - sensor.disk_use_percent_home
+    - sensor.memory_use_percent
     
     - sensor.date
     

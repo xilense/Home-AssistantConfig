@@ -1,0 +1,5 @@
+platform: google_travel_time
+name: 'Joko to Home'
+api_key: !secret google_travel_time_api
+origin: device_tracker.google_maps_101676721020210595319
+destination: zone.home

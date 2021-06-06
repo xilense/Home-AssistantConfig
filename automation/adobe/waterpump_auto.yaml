@@ -1,0 +1,12 @@
+alias: 'Waterpump Auto'
+initial_state: 'on'
+
+trigger:
+- platform: state
+  entity_id: switch.waterpump
+  to: 'on'
+  for: "01:01:00"
+
+action:
+- service: homeassistant.turn_off
+  entity_id: switch.waterpump

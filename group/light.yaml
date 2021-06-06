@@ -1,4 +1,4 @@
 name: 'Light'
 entities:
-  - light.main_light
+  - light.yeelight
   - light.mi_gateway

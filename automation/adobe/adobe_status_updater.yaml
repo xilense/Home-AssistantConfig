@@ -1,0 +1,32 @@
+alias: 'Adobe Status Updater'
+initial_state: 'on'
+
+trigger:
+- platform: homeassistant
+  event: start
+- platform: state
+  entity_id: group.family
+  to: 'not_home'
+  for: '00:05:00'
+- platform: state
+  entity_id: group.family
+  to: 'home'
+  for: '00:00:03'
+
+condition:
+- condition: state
+  entity_id: input_boolean.guest_mode
+  state: 'off'
+
+action:
+- service: input_select.select_option
+  data_template:
+    entity_id: input_select.adobe_status
+    option: >-
+      {% if states.group.family.state == 'home' %}
+        Home
+      {% elif states.group.family.state == 'not_home' %}
+        Away
+      {% else %}
+        Standby
+      {% endif %}

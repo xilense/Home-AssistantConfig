@@ -1,0 +1,20 @@
+alias: 'Speaker Auto'
+
+trigger:
+- platform: state
+  entity_id: switch.xlns_pc
+  to: 'off'
+  for: '00:10:00'
+- platform: state
+  entity_id: switch.xlns_pc
+  to: 'on'
+
+action:
+- service_template: >
+    {% if is_state("switch.xlns_pc", "on") %}
+      switch.turn_on
+    {%-elif is_state("switch.xlns_pc", "off") %}
+      switch.turn_off
+    {% endif %}
+  data_template:
+    entity_id: 'switch.speaker'

@@ -5,7 +5,7 @@ trigger:
   - platform: state
     entity_id:
       - light.mi_gateway
-      - light.main_light
+      - light.yeelight
 
 condition:
 - condition: template

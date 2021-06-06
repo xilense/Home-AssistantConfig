@@ -1,4 +1,4 @@
 name: 'Custom'
 entities:
-  switch.adguard_protection:
+  switch.adguard_filtering:
     state: on

@@ -1,0 +1,27 @@
+alias: 'Notif - Corona'
+initial_state: 'on'
+
+trigger:
+- platform: state
+  entity_id: sensor.indonesia_coronavirus_confirmed
+
+# condition:
+# - condition: template
+#   value_template: "{{ states('trigger.from_state') | int < states('trigger.to_state') | int }}"
+
+action:
+- service: notify.telegram
+  data:
+    title: "{{'\U0001F1EE'}}{{'\U0001F1E9'}} *Corona Update Indonesia*"
+    message: "
+    Confirmed : {{ states.sensor.indonesia_coronavirus_confirmed.state }}
+    
+    Current : {{ states.sensor.indonesia_coronavirus_current.state }}
+    
+    Death : {{ states.sensor.indonesia_coronavirus_deaths.state }}
+    
+    Recovered : {{ states.sensor.indonesia_coronavirus_recovered.state }}
+    
+    
+    https://www.covid19.go.id/situasi-virus-corona/
+    "

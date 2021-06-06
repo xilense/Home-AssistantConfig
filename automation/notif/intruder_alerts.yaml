@@ -1,0 +1,20 @@
+alias: 'Intruder Alert'
+initial_state: 'on'
+
+trigger:
+- platform: state
+  entity_id: binary_sensor.door
+  to: 'on'
+
+condition:
+- condition: state
+  entity_id: group.family
+  state: 'not_home'
+- condition: template
+  value_template: "{{ states.input_select.adobe_status.state != 'Home' }}"
+
+action:
+- service: notify.telegram
+  data:
+    title: "{{'\U0001F3E0'}}{{'\U0001F514'}} *Intruder Alert*"
+    message: "Someone open the door"

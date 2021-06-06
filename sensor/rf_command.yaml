@@ -13,9 +13,9 @@ value_template: >-
   {% elif value_json.RfReceived.Data == 'A43429' %}
     Motion Detected
   {% elif value_json.RfReceived.Data == '0DD40E' %}
-    Door Open
+    Door Locked
   {% elif value_json.RfReceived.Data == '0DD407' %}
-    Door Closed
+    Door Unlocked
   {% else %}
     {{value_json.RfReceived.Data}}
   {% endif %}
@@ -28,5 +28,24 @@ expire_after: 1
 
 # A43429 = Motion
 
-# 0DD40E = Door Oopen
+# 0DD40E = Door Open
 # 0DD407 = Door Closed
+
+# value_template: >-
+#   {% if value_json.RfReceived.Data == '67A622' %}
+#     A
+#   {% elif value_json.RfReceived.Data == 'C545C0' %}
+#     B
+#   {% elif value_json.RfReceived.Data == '67A621' %}
+#     C
+#   {% elif value_json.RfReceived.Data == '67A624' %}
+#     D
+#   {% elif value_json.RfReceived.Data == 'A43429' %}
+#     Motion Detected
+#   {% elif value_json.RfReceived.Data == '0DD40E' %}
+#     Door Open
+#   {% elif value_json.RfReceived.Data == '0DD407' %}
+#     Door Closed
+#   {% else %}
+#     {{value_json.RfReceived.Data}}
+#   {% endif %}

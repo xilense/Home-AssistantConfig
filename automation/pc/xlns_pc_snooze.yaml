@@ -1,0 +1,11 @@
+alias: 'XLNS-PC Snooze'
+
+trigger:
+- platform: state
+  entity_id: binary_sensor.xlns_pc_activity
+  to: 'off'
+  for: '01:00:00'
+
+action:
+- service: switch.turn_off
+  entity_id: switch.xlns_pc

@@ -1,0 +1,68 @@
+esphome:
+  name: water_pump
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  ap:
+    ssid: "Waterpump Fallback"
+    password: !secret wifi_password
+
+# captive_portal:
+
+api:
+
+logger:
+
+ota:
+
+binary_sensor:
+  - platform: gpio
+    internal: true
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "Waterpump Button GPIO0"
+    on_press:
+      - switch.toggle: relay_pump
+      - delay: 3600s
+      - switch.turn_off: relay_pump
+  - platform: gpio
+    internal: true
+    pin:
+      number: GPIO14
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "Waterpump Button GPIO14"
+    on_state:
+      - switch.toggle: relay_pump
+      - delay: 3600s
+      - switch.turn_off: relay_pump
+
+switch:
+  - platform: gpio
+    icon: mdi:water-pump
+    name: "Waterpump"
+    pin: GPIO12
+    id: relay_pump
+    restore_mode: ALWAYS_OFF
+    on_turn_on:
+    - light.turn_on: pump_led
+    on_turn_off:
+    - light.turn_off: pump_led
+
+light:
+  - platform: monochromatic
+    output: basic_green_led
+    id: pump_led
+
+output:
+  - platform: esp8266_pwm
+    id: basic_green_led
+    pin:
+      number: GPIO13
+      inverted: True
