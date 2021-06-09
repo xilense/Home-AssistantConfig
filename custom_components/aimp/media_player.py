@@ -32,6 +32,7 @@ from homeassistant.const import (
     STATE_PLAYING,
 )
 import homeassistant.helpers.config_validation as cv
+import homeassistant.util.dt as dt_util
 from homeassistant.util import Throttle
 
 _LOGGER = logging.getLogger(__name__)
@@ -88,11 +89,13 @@ class AIMP(MediaPlayerEntity):
         self._playinfo = {}
         self._playlists = []
         self._playlists_db = dict()
-        self._playlists_1st_track = dict()
+        # self._playlists_1st_track = dict()
         self._currentplaylist = None
 
         self._state = {}
-        self._media_seek_position = {}
+        self._media_position = int()
+        self._media_position_dict = {}
+        self._media_position_updated_at = None
         self._volume_level = {}
         self._shuffle = {}
         self._is_volume_muted = {}
@@ -115,11 +118,28 @@ class AIMP(MediaPlayerEntity):
                 )
                 return False
 
-            # _LOGGER.error(
+            # _LOGGER.debug(
             #     "Command Success! Result: %s Payload: %s",
             #     result,
             #     payload,
             # )
+
+
+            # mediaseek = self._media_position_dict.get("value", 0)
+            # _LOGGER.debug(
+            #     "Command Success! mediaseek: %s ",
+            #     int(mediaseek),
+            # )
+            
+            
+            # mediadur = self._playinfo.get("duration", 0)
+            # _LOGGER.debug(
+            #     "Command Success! mediadur: %s ",
+            #     int(mediadur) // 1000,
+            # )
+
+        #######################################################################
+
         except requests.exceptions.RequestException:
             _LOGGER.error(
                 "Could not send command %s to AIMP at: %s", method, self._url
@@ -137,11 +157,17 @@ class AIMP(MediaPlayerEntity):
         self.update_playinfo()
         self.update_coverurl()
         self.update_state()
-        self.update_media_seek_position()
+        self.update_media_position()
         self.update_volume_level()
         self.update_shuffle()
         self.update_is_volume_muted()
         self.update_playlists()
+
+        pos = self._media_position_dict["value"]
+        position = int(pos)
+        if self._media_position != position:
+            self._media_position_updated_at = dt_util.utcnow()
+            self._media_position = position
 
     def update_playinfo(self):
         resp = self.send_aimp_msg(
@@ -165,11 +191,11 @@ class AIMP(MediaPlayerEntity):
             return
         self._state = resp.copy()
 
-    def update_media_seek_position(self):
+    def update_media_position(self):
         resp = self.send_aimp_msg("Status", {"status_id":31})
         if resp is False:
             return
-        self._media_seek_position = resp.copy()
+        self._media_position_dict = resp.copy()
 
     def update_volume_level(self):
         resp = self.send_aimp_msg("Status", {"status_id":1})
@@ -238,15 +264,27 @@ class AIMP(MediaPlayerEntity):
         return mediaurl
 
     @property
-    def media_seek_position(self):
+    def media_position(self):
         """Time in seconds of current seek position."""
-        return self._media_seek_position.get("value", None)
+        # return self._media_position_dict.get("value", None)
+        
+        time = self._media_position_dict.get("value")
+        if time is None:
+            return None
 
+        return int(time)
+        
     @property
     def media_duration(self):
         """Time in seconds of current song duration."""
-        return self._playinfo.get("duration", None) // 100
+        # return self._playinfo.get("duration", None) // 1000
         
+        time = self._playinfo.get("duration")
+        if time is None:
+            return None
+
+        return int(time) // 1000
+
     @property
     def volume_level(self):
         """Volume level of the media player (0..1)."""
@@ -278,6 +316,9 @@ class AIMP(MediaPlayerEntity):
     @property
     def source(self):
         """Name of the current input source."""
+        playlistid = self._playinfo.get("playlist_id", None)
+        playlistname = self._playlists_db[str(playlistid)]
+        self._currentplaylist = playlistname
         return self._currentplaylist
 
     @property
@@ -316,14 +357,59 @@ class AIMP(MediaPlayerEntity):
         """Enable/disable shuffle mode."""
         shufflecmd = 1 if shuffle else 0
         self.send_aimp_msg("Status", {"status_id": 5, "value": shufflecmd })
+        
+    def media_seek(self, position):
+        """Send seek command."""
+        # resp = self.send_aimp_msg("Status", {"status_id": 31, "value": position })
+        # if resp is False:
+        #     return
+        # self._media_position_dict = resp.copy()
+        
+        self.send_aimp_msg("Status", {"status_id": 31, "value": int(position) })
+
+        _LOGGER.debug(
+            "Success! position: %s",
+            position,
+        )
 
     def select_source(self, source):
         """Choose a different available playlist and play it."""
         self._currentplaylist = source
-        self.send_aimp_msg(
-            "commands",{}
+        
+        def get_key(val):
+            for key, value in self._playlists_db.items():
+                 if val == value:
+                     return key
+         
+            return "key doesn't exist"
+         
+        playlistid = get_key(source)
+        
+        resp = self.send_aimp_msg(
+            "GetPlaylistEntries", {"playlist_id":int(playlistid),"fields":["album","artist","bitrate","genre","duration","filesize","date","id","rating"]}
         )
-
+        
+        x = re.findall(r"\[\[(.+?)\]\,", str(resp))
+        str1 = ''.join(x)
+        tuple1 = tuple(map(str, str1.split(', ')))
+        trackid = tuple1[7]
+        
+        resp2 = self.send_aimp_msg(
+            "Play", {"playlist_id": int(playlistid), "track_id": int(trackid)}
+        )
+        if resp2 is False:
+            return
+        
+        # _LOGGER.debug(
+        #     "Success! tuple1: %s",
+        #     tuple1,
+        # )
+        
+        # _LOGGER.debug(
+        #     "Success! int(playlistid): %s int(trackid): %s",
+        #     int(playlistid), int(trackid),
+        # )
+        
     def clear_playlist(self):
         """Clear players playlist."""
         self._currentplaylist = None
@@ -341,20 +427,7 @@ class AIMP(MediaPlayerEntity):
         for var in playlists_db:
             self._playlists_db[var[0]] = var[1]
 
-        # for x in self._playlists_db.keys():
-        #     track = self.send_aimp_msg(
-        #         "GetPlaylistEntries", {"playlist_id":x,"fields":["id"]}
-        #     )
-        #     _LOGGER.error(
-        #         "Success! Result: %s",
-        #         track,
-        #     )
-
-            # playlists_1st_track = re.findall(r"'title': '(.+?)'", str(playlists))
-
-            # self._playlists_1st_track = 
-
-        _LOGGER.error(
-            "Success! Result: %s",
-            self._playlists_db,
-        )
+        # _LOGGER.debug(
+        #     "Success! self._playlists_db: %s",
+        #     self._playlists_db,
+        # )

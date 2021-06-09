@@ -1,0 +1,11 @@
+# whitelist files/folders with !, these will not be ignored.
+!*.yaml
+!.gitignore
+!*.md
+!.~*
+!*dev.py
+!*dev
+
+# Ignore folders.
+__pycache__
+dev
