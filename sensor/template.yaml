@@ -3,7 +3,6 @@ sensors:
   day:
     friendly_name: 'Day'
     icon_template: mdi:calendar
-    entity_id: sensor.date
     value_template: >
       {% set days = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"] %}
       {{ days[now().weekday()] }}
