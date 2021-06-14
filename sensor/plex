@@ -1,4 +1,0 @@
-platform: plex
-name: 'Plex'
-host: !secret xlns_pc_ip
-token: !secret plex_token

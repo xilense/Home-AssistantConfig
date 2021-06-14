@@ -1,8 +1,0 @@
-alias: 'XLNS-PC Wakeup'
-mode: single
-sequence:
-  - service: switch.turn_on
-    entity_id: switch.xlnspc_wakeup
-  - delay: 0.5
-  - service: switch.turn_off
-    entity_id: switch.xlnspc_wakeup
