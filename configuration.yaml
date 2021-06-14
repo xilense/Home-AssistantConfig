@@ -55,13 +55,13 @@ lovelace:
   #     show_in_sidebar: true
   #     filename: ui-lovelace.yaml
 
-# browser_mod:
-#   prefix: "browser_"
-#   devices:
-#     a0812e89_52cec6c4:
-#       name: "Browser XLNS-PC"
-#     ac02b632_280e8b9f:
-#       name: "Browser Z4"
+browser_mod:
+  prefix: "browser_"
+  devices:
+    a0812e89_52cec6c4:
+      name: "Browser XLNS-PC"
+    ac02b632_280e8b9f:
+      name: "Browser Z4"
 
 panel_iframe:
   tasmoadmin:
@@ -163,7 +163,6 @@ tts:
 
 frontend:
   themes: !include_dir_merge_named themes
-  javascript_version: latest
 
 map:
 sun:

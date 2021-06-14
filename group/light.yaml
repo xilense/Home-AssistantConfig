@@ -1,4 +1,4 @@
 name: 'Light'
 entities:
   - light.yeelight
-  - light.mi_gateway
+  - light.xiaomi_gateway_light

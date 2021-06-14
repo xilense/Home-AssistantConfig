@@ -8,7 +8,7 @@ automation:
       - platform: state
         entity_id: input_number.xlns_pc_volume
     action:
-      - delay: '00:00:02'
+      - delay: '00:00:01'
       - service: mqtt.publish
         data:
           topic: "pc/command/volume/set"
@@ -18,7 +18,7 @@ automation:
     mode: restart
     trigger:
       - platform: mqtt
-        topic: 'pc/state/volume/set'
+        topic: 'pc/command/volume/set'
     action:
       - service: input_number.set_value
         data_template:
@@ -48,8 +48,9 @@ binary_sensor:
   - platform: mqtt
     name: "XLNS-PC - Activity"
     state_topic: "pc/activity/state"
-    off_delay: 180
+    # off_delay: 180
     device_class: connectivity
+    force_update: true
 
   # - platform: mqtt
   #   name: "XLNS-PC - Media Playing"
@@ -112,21 +113,23 @@ sensor:
 
   - platform: mqtt
     name: "XLNS-PC - CPU Usage"
-    state_topic: "pc/state/cpu/usage"
+    state_topic: "pc/cpu/state/usage"
     unit_of_measurement: '%'
     icon: mdi:speedometer
     value_template: "{{ value }}"
     expire_after: 180
     qos: 1
+    force_update: true
 
   - platform: mqtt
     name: "XLNS-PC - RAM Usage"
-    state_topic: "pc/state/memory/usage"
+    state_topic: "pc/memory/state/usage"
     unit_of_measurement: '%'
     icon: mdi:memory
     value_template: "{{ value }}"
     expire_after: 180
     qos: 1
+    force_update: true
 
   # - platform: mqtt
   #   name: "XLNS-PC - RAM Available"
@@ -163,12 +166,13 @@ sensor:
 
   - platform: mqtt
     name: "XLNS-PC - HDD Usage (C)"
-    state_topic: "pc/state/hdd/c/usage"
+    state_topic: "pc/hdd/state/c/usage"
     unit_of_measurement: '%'
     icon: mdi:chart-donut
     value_template: "{{ value }}"
     expire_after: 180
     qos: 1
+    force_update: true
 
   # - platform: mqtt
   #   name: "XLNS-PC - HDD Total Size (C)"
@@ -251,7 +255,7 @@ sensor:
 camera:
   - platform: mqtt
     name: "XLNS-PC - Display"
-    topic: "pc/state/display"
+    topic: "pc/display/preview"
 
 
 script:
@@ -282,22 +286,31 @@ script:
         topic: "pc/command/hibernate"
         payload: ""
 
-  xlnspc_displays_on:
-    alias: "Display On"
-    icon: mdi:monitor-clean
-    sequence:
-    - service: mqtt.publish
-      data:
-        topic: "pc/command/displays/on"
-        payload: ""
+  # xlnspc_displays_on:
+  #   alias: "Display On"
+  #   icon: mdi:monitor-clean
+  #   sequence:
+  #   - service: mqtt.publish
+  #     data:
+  #       topic: "pc/command/displays"
+  #       payload: "ON"
 
-  xlnspc_displays_off:
-    alias: "Display Off"
-    icon: mdi:monitor-off
+  # xlnspc_displays_off:
+  #   alias: "Display Off"
+  #   icon: mdi:monitor-off
+  #   sequence:
+  #   - service: mqtt.publish
+  #     data:
+  #       topic: "pc/command/displays"
+  #       payload: "OFF"
+
+  xlnspc_refresh_status:
+    alias: "Refresh"
+    icon: mdi:sync
     sequence:
     - service: mqtt.publish
       data:
-        topic: "pc/command/displays/off"
+        topic: "pc/command/refresh_status"
         payload: ""
 
   xlnspc_start_steam:
@@ -308,7 +321,6 @@ script:
       data:
         topic: "pc/command/steam/on"
         payload: ""
-
 
   # xlnspc_vol_max:
   #   alias: "XLNS-PC - Vol Max"
@@ -327,7 +339,7 @@ switch:
 
 light:
   - platform: mqtt
-    name: "XLNS-PC - Display"
-    command_topic: "pc/command/display"
-    state_topic: "pc/state/display"
-
+    icon: mdi:monitor
+    name: "XLNS-PC - Monitor"
+    command_topic: "pc/command/monitor"
+    state_topic: "pc/state/monitor"

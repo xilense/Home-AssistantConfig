@@ -99,7 +99,7 @@ sensor.recently_added:
 sensor.sonarr_disk_space:
   friendly_name: 'Disk Space'
 
-sensor.sonarr_series:
+sensor.sonarr_shows:
   friendly_name: 'Series'
   icon: mdi:youtube-tv
 

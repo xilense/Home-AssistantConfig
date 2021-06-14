@@ -17,7 +17,7 @@ sensors:
       {{ months[now().month-1] }}
 
   latest_version_text:
-    friendly_name: 'Updated version'
+    friendly_name: 'Updated Version'
     icon_template: mdi:home-assistant
     value_template: >-
       {% if states('sensor.installed_version') == states('sensor.latest_version') %}

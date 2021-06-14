@@ -5,6 +5,7 @@ trigger:
   event: start
 
 action:
-  service: frontend.set_theme
-  data:
-   name: light
+  - service: mqtt.publish
+    data:
+      topic: "pc/command/refresh_status"
+      payload: ""

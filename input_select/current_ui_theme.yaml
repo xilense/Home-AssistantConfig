@@ -4,3 +4,5 @@ initial: light
 options:
   - light
   - dark
+  - yourname
+  - clear-dark
