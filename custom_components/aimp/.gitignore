@@ -2,9 +2,12 @@
 !*.yaml
 !.gitignore
 !*.md
-!.~*
-!*dev.py
-!*dev
+!.json
+!.github
+!/.github/
+
+# Ignore files.
+.~*
 
 # Ignore folders.
 __pycache__

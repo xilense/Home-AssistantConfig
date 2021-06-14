@@ -30,6 +30,7 @@ from homeassistant.const import (
     STATE_OFF,
     STATE_PAUSED,
     STATE_PLAYING,
+    STATE_UNAVAILABLE,
 )
 import homeassistant.helpers.config_validation as cv
 import homeassistant.util.dt as dt_util
@@ -64,7 +65,6 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     }
 )
 
-
 def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the AIMP platform."""
     name = config.get(CONF_NAME)
@@ -85,14 +85,15 @@ class AIMP(MediaPlayerEntity):
         self._name = name
         self._available = False
 
+        self._aimp = None
         self._coverurl = {}
         self._playinfo = {}
         self._playlists = []
         self._playlists_db = dict()
-        # self._playlists_1st_track = dict()
         self._currentplaylist = None
 
-        self._state = {}
+        self._state = STATE_UNAVAILABLE
+        self._state_dict = {}
         self._media_position = int()
         self._media_position_dict = {}
         self._media_position_updated_at = None
@@ -109,7 +110,6 @@ class AIMP(MediaPlayerEntity):
             if response.status_code == 200:
                 data = response.json()
                 result = data["result"]
-                self._available = True
             else:
                 _LOGGER.error(
                     "Query failed, response code: %s Full message: %s",
@@ -124,27 +124,12 @@ class AIMP(MediaPlayerEntity):
             #     payload,
             # )
 
-
-            # mediaseek = self._media_position_dict.get("value", 0)
-            # _LOGGER.debug(
-            #     "Command Success! mediaseek: %s ",
-            #     int(mediaseek),
-            # )
-            
-            
-            # mediadur = self._playinfo.get("duration", 0)
-            # _LOGGER.debug(
-            #     "Command Success! mediadur: %s ",
-            #     int(mediadur) // 1000,
-            # )
-
         #######################################################################
 
         except requests.exceptions.RequestException:
             _LOGGER.error(
                 "Could not send command %s to AIMP at: %s", method, self._url
             )
-            self._available = False
             return False
         try:
             return result
@@ -154,20 +139,33 @@ class AIMP(MediaPlayerEntity):
 
     def update(self):
         """Update state."""
-        self.update_playinfo()
-        self.update_coverurl()
-        self.update_state()
-        self.update_media_position()
-        self.update_volume_level()
-        self.update_shuffle()
-        self.update_is_volume_muted()
-        self.update_playlists()
+        if self._aimp is None:
+            try:
+                url = f"http://{self._url}/RPC_JSON"
+                payload = {"version":"1.1","method":"Status","id":1,"params":{"status_id":4}}
+                response = requests.post(url, json=payload, timeout=3)
+                if response.status_code == 200:
+                    self._available = True
+                    self.update_playinfo()
+                    self.update_coverurl()
+                    self.update_state()
+                    self.update_media_position()
+                    self.update_volume_level()
+                    self.update_shuffle()
+                    self.update_is_volume_muted()
+                    self.update_playlists()
+                    
+            except requests.exceptions.RequestException:
+                if self._available:
+                    _LOGGER.error(
+                        "Connect error to AIMP at: %s", self._url
+                    )
+                    self._available = False
+                self._aimp = None
+                return
 
-        pos = self._media_position_dict["value"]
-        position = int(pos)
-        if self._media_position != position:
-            self._media_position_updated_at = dt_util.utcnow()
-            self._media_position = position
+            self._state = STATE_IDLE
+            self._available = True
 
     def update_playinfo(self):
         resp = self.send_aimp_msg(
@@ -189,7 +187,7 @@ class AIMP(MediaPlayerEntity):
         resp = self.send_aimp_msg("Status", {"status_id":4})
         if resp is False:
             return
-        self._state = resp.copy()
+        self._state_dict = resp.copy()
 
     def update_media_position(self):
         resp = self.send_aimp_msg("Status", {"status_id":31})
@@ -223,12 +221,11 @@ class AIMP(MediaPlayerEntity):
     @property
     def state(self):
         """Return the state of the device."""
-        playback_state = self._state.get("value", None)
+        playback_state = self._state_dict.get("value", None)
         if playback_state == 2:
             return STATE_PAUSED
         if playback_state == 1:
             return STATE_PLAYING
-
         return STATE_IDLE
 
     @property
@@ -266,19 +263,20 @@ class AIMP(MediaPlayerEntity):
     @property
     def media_position(self):
         """Time in seconds of current seek position."""
-        # return self._media_position_dict.get("value", None)
-        
         time = self._media_position_dict.get("value")
         if time is None:
             return None
-
         return int(time)
-        
+
+    @property
+    def media_position_updated_at(self):
+        """When was the position of the current playing media valid."""
+        time = dt_util.utcnow()
+        return time
+
     @property
     def media_duration(self):
         """Time in seconds of current song duration."""
-        # return self._playinfo.get("duration", None) // 1000
-        
         time = self._playinfo.get("duration")
         if time is None:
             return None
@@ -342,11 +340,13 @@ class AIMP(MediaPlayerEntity):
         """Send media_pause command to media player."""
         self.send_aimp_msg("Pause", "{}")
 
+    def media_stop(self):
+        """Send media_pause command to media player."""
+        self.send_aimp_msg("Stop", "{}")
+
     def set_volume_level(self, volume):
         """Send volume_up command to media player."""
-        self.send_aimp_msg(
-            "Status", {"status_id": 1, "value": int(volume * 100)}
-        )
+        self.send_aimp_msg("Status", {"status_id": 1, "value": int(volume * 100)})
 
     def mute_volume(self, mute):
         """Send mute command to media player."""
@@ -360,17 +360,7 @@ class AIMP(MediaPlayerEntity):
         
     def media_seek(self, position):
         """Send seek command."""
-        # resp = self.send_aimp_msg("Status", {"status_id": 31, "value": position })
-        # if resp is False:
-        #     return
-        # self._media_position_dict = resp.copy()
-        
         self.send_aimp_msg("Status", {"status_id": 31, "value": int(position) })
-
-        _LOGGER.debug(
-            "Success! position: %s",
-            position,
-        )
 
     def select_source(self, source):
         """Choose a different available playlist and play it."""
@@ -380,40 +370,46 @@ class AIMP(MediaPlayerEntity):
             for key, value in self._playlists_db.items():
                  if val == value:
                      return key
-         
             return "key doesn't exist"
-         
+
         playlistid = get_key(source)
-        
         resp = self.send_aimp_msg(
             "GetPlaylistEntries", {"playlist_id":int(playlistid),"fields":["album","artist","bitrate","genre","duration","filesize","date","id","rating"]}
         )
-        
-        x = re.findall(r"\[\[(.+?)\]\,", str(resp))
-        str1 = ''.join(x)
-        tuple1 = tuple(map(str, str1.split(', ')))
-        trackid = tuple1[7]
-        
+        try: 
+            entries = resp.get("entries")
+        except AttributeError:
+            _LOGGER.error("Received invalid response: resp: %s", 
+            resp,
+            )
+            return False
+            
+        try:
+            trackinfo = list(entries[0])
+        except AttributeError:
+            _LOGGER.error("Received invalid response: : entries: %s", 
+            entries,
+            )
+            return False
+            
+        try:
+            trackid = trackinfo[7]
+        except AttributeError:
+            _LOGGER.error("Received invalid response: trackinfo: %s", 
+            trackinfo,
+            )
+            return False
+
         resp2 = self.send_aimp_msg(
             "Play", {"playlist_id": int(playlistid), "track_id": int(trackid)}
         )
         if resp2 is False:
             return
         
-        # _LOGGER.debug(
-        #     "Success! tuple1: %s",
-        #     tuple1,
-        # )
-        
-        # _LOGGER.debug(
-        #     "Success! int(playlistid): %s int(trackid): %s",
-        #     int(playlistid), int(trackid),
-        # )
-        
     def clear_playlist(self):
         """Clear players playlist."""
         self._currentplaylist = None
-        self.send_aimp_msg("commands", {})
+        self.send_aimp_msg("Stop", "{}")
 
     @Throttle(PLAYLIST_UPDATE_INTERVAL)
     def update_playlists(self, **kwargs):
